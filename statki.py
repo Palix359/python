@@ -10,7 +10,6 @@ row8=[8,'','[]','[]','[]','[]','[]','[]','[]','[]','[]','[]',]
 row9=[9,'','[]','[]','[]','[]','[]','[]','[]','[]','[]','[]',]
 row10=[10,'[]','[]','[]','[]','[]','[]','[]','[]','[]','[]',]
 
-
 def plansza(litery,row1,row2,row3,row4,row5,row6,row7,row8,row9,row10):
     print(*litery, sep='  ')
     print(*row1)
@@ -24,4 +23,13 @@ def plansza(litery,row1,row2,row3,row4,row5,row6,row7,row8,row9,row10):
     print(*row9)
     print(*row10)
 
-plansza(litery,row1,row2,row3,row4,row5,row6,row7,row8,row9,row10)
+print("===============================================================")
+print("|                        GRA w STATKI                         |")
+print("| Wybierz tryb gry:                              /|           |")
+print("|    - Gra jednoosobowa (wciśnij 1)             / |           |")
+print("|    - Gra dwuoosobowa  (wciśnij 2)            /  |           |")
+print("|    - Gra dwuoosobowa  (wciśnij 2)               |           |")
+print("|                                          - - - - - - -      |")
+print("|                                          \ _ _ _ _ _ /      |")
+print("===============================================================")
+# plansza(litery,row1,row2,row3,row4,row5,row6,row7,row8,row9,row10)
