@@ -1,8 +1,8 @@
-def menu():
-    print("===============================================================")
-    print("|                         GRA w STATKI                        |")
+def menu(w_menu):
+    print(f"{biały}===============================================================")
+    print(f"|                         {pogrubienie}GRA w STATKI{biały}                        |")
     print("|                                                /|           |")
-    print("| Wybierz opcje:                                / |           |")
+    print(f"| {podkreślenie}Wybierz opcje:{biały}                                / |           |")
     print("|    - Gra jednosobowa  (wciśnij 1)            /  |           |")
     print("|    - Gra dwuosobowa   (wciśnij 2)           /_ _|           |")
     print("|    - Ustawienia       (wciśnij 3)        _ _ _ _|_ _ _      |")
@@ -10,6 +10,17 @@ def menu():
     print("| v.0.1.1                                                     |")
     print("===============================================================")
 
+    w_menu=int(input("Tutaj wpisz liczbę: "))
+    if w_menu==1:
+        print("1")
+    elif w_menu==2:
+        print("2")
+    elif w_menu==3:
+        print("3")
+    else:
+        print(f"{czerwony}Podano nieprawdiłową liczbę{biały}")
+        menu(w_menu)
+    
 def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
     print(*litery, sep='  ')
     print(*prow1)
@@ -35,5 +46,13 @@ prow8=[8,'','[]','[]','[]','[]','[]','[]','[]','[]','[]','[]',]
 prow9=[9,'','[]','[]','[]','[]','[]','[]','[]','[]','[]','[]',]
 prow10=[10,'[]','[]','[]','[]','[]','[]','[]','[]','[]','[]',]
 
-menu()
+czerwony = "\033[1;31m"
+biały = "\033[0m"
+niebieski = "\033[94m"
+zielony = "\033[92m"
+podkreślenie = "\033[4m"
+pogrubienie= "\033[1m"
+
+w_menu = int
+print(menu(w_menu))
 # plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
