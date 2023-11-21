@@ -1,9 +1,14 @@
+import os
+import time
+def wait():
+    time.sleep(0.5)
+    os.system('clear')
 def menu(w_menu):
     print(f"{biały}===============================================================")
     print(f"|                         {pogrubienie}GRA w STATKI{biały}                        |")
     print("|                                                /|           |")
     print(f"| {podkreślenie}Wybierz opcje:{biały}                                / |           |")
-    print("|    - Gra jednosobowa  (wciśnij 1)            /  |           |")
+    print("|    - Gra jednoosobowa  (wciśnij 1)           /  |           |")
     print("|    - Gra dwuosobowa   (wciśnij 2)           /_ _|           |")
     print("|    - Ustawienia       (wciśnij 3)        _ _ _ _|_ _ _      |")
     print("|                                          \ _ _ _ _ _ /      |")
@@ -12,20 +17,16 @@ def menu(w_menu):
 
     w_menu=int(input("Tutaj wpisz liczbę: "))
     if w_menu==1:
-        print()
-        print()
-        print()
-        print(f"{niebieski}Funkcja obecnie niedostępna{biały}")
+        wait()
+        print(f"{niebieski}Gra jednoosobowa jest obecnie niedostępna{biały}")
         menu(w_menu)
     elif w_menu==2:
-        print("2")
-        # print(f"{niebieski}Funkcja obecnie niedostępna{biały}")
+        wait()
+        # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
         # menu(w_menu)
     elif w_menu==3:
-        print()
-        print()
-        print()
-        print(f"{niebieski}Funkcja obecnie niedostępna{biały}")
+        wait()
+        print(f"{niebieski}Ustawienia są obecnie niedostępne{biały}")
         menu(w_menu)
     else:
         print(f"{czerwony}Podano nieprawdiłową liczbę{biały}")
