@@ -12,11 +12,21 @@ def menu(w_menu):
 
     w_menu=int(input("Tutaj wpisz liczbę: "))
     if w_menu==1:
-        print("1")
+        print()
+        print()
+        print()
+        print(f"{niebieski}Funkcja obecnie niedostępna{biały}")
+        menu(w_menu)
     elif w_menu==2:
         print("2")
+        # print(f"{niebieski}Funkcja obecnie niedostępna{biały}")
+        # menu(w_menu)
     elif w_menu==3:
-        print("3")
+        print()
+        print()
+        print()
+        print(f"{niebieski}Funkcja obecnie niedostępna{biały}")
+        menu(w_menu)
     else:
         print(f"{czerwony}Podano nieprawdiłową liczbę{biały}")
         menu(w_menu)
