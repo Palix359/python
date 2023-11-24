@@ -2,7 +2,7 @@ import os
 import time
 def wait():
     time.sleep(0.5)
-    os.system('clear')
+    os.system('cls')
 def menu(w_menu):
     print(f"{biały}===============================================================")
     print(f"|                         {pogrubienie}GRA w STATKI{biały}                        |")
@@ -29,10 +29,9 @@ def menu(w_menu):
         print(f"{niebieski}Ustawienia są obecnie niedostępne{biały}")
         menu(w_menu)
     else:
-        os.system('clear')
+        wait()
         print(f"{czerwony}Podano nieprawdiłową liczbę{biały}")
-        menu(w_menu)
-    
+        menu(w_menu)   
 def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
     print(*litery, sep='  ')
     print(*prow1)
@@ -45,36 +44,153 @@ def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10
     print(*prow8)
     print(*prow9)
     print(*prow10)
-def ukladanie1(statek,spoj,litery):
-    for i in spoj:
+def plansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10):
+    print(*litery, sep='  ')
+    print(*sprow1)
+    print(*sprow2)
+    print(*sprow3)
+    print(*sprow4)
+    print(*sprow5)
+    print(*sprow6)
+    print(*sprow7)
+    print(*sprow8)
+    print(*sprow9)
+    print(*sprow10)
+def ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,i):
+    while spoj>0:
+        wait()
         plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
         print(f"Pozostało jeszcze: {spoj} statków pojdynczych")
         l_set=str(input("Podaj literę kolumny: "))
+        l_set = l_set.upper()
+        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
+            print(f"{czerwony}Podałeś złą literę!{biały}")
+            time.sleep(1)
+            plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+            l_set=str(input("Podaj nową literę kolumny: "))
+            l_set=l_set.upper()
         n_set=int(input("Podaj numer wiersza: "))
+        while n_set<0 or n_set>10:
+            print(f"{czerwony}Podałeś zły numer!{biały}")
+            time.sleep(1)
+            plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+            n_set=int(input("Podaj nowy numer wiersza: "))
         kol=k_litery[l_set]
         kol=kol+1
+        a=int
+        
         if n_set==1:
-            prow1[kol]=statek
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow1[a]==statek or prow2[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow1[kol]=statek
         elif n_set==2:
-            prow2[kol]=statek
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow1[a]==statek or prow2[a]==statek or prow3[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow2[kol]=statek
         elif n_set==3:
-            prow3[kol]=statek
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow2[a]==statek or prow3[a]==statek or prow4[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow3[kol]=statek
         elif n_set==4:
-            prow4[kol]=statek           
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow3[a]==statek or prow4[a]==statek or prow5[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow4[kol]=statek          
         elif n_set==5:
-            prow5[kol]=statek
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow4[a]==statek or prow5[a]==statek or prow6[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow5[kol]=statek 
         elif n_set==6:
-            prow6[kol]=statek
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow5[a]==statek or prow6[a]==statek or prow7[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow6[kol]=statek
         elif n_set==7:
-            prow7[kol]=statek
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow6[a]==statek or prow7[a]==statek or prow8[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow7[kol]=statek
         elif n_set==8:
-            prow8[kol]=statek
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow7[a]==statek or prow8[a]==statek or prow9[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow8[kol]=statek
         elif n_set==9:
-            prow9[kol]=statek
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow8[a]==statek or prow9[a]==statek or prow10[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow9[kol]=statek
         else:
-            prow10[kol]=statek
-        plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                if prow9[a]==statek or prow10[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj=spoj+1
+                    break
+                elif a==kol+1:
+                    prow10[kol]=statek
         spoj=spoj-1
+    i=i+1
 
 
 czerwony = "\033[1;31m"
@@ -90,20 +206,35 @@ t_statek='◆ '
 t_woda='◇ '
 
 litery=['  ','A','B','C','D','E','F','G','H','I','J']
-prow1=[1,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow2=[2,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow3=[3,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow4=[4,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow5=[5,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow6=[6,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow7=[7,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow8=[8,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow9=[9,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
-prow10=[10,'','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ']
+prow1=[1,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow2=[2,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow3=[3,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow4=[4,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow5=[5,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow6=[6,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow7=[7,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow8=[8,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow9=[9,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+prow10=[10,'','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+
+sprow1=[1,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow2=[2,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow3=[3,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow4=[4,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow5=[5,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow6=[6,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow7=[7,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow8=[8,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow9=[9,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow10=[10,'','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 
 
 w_menu = int
-print(menu(w_menu))
+l_set = str
+n_set = int
+kol = int
+i=0
+menu(w_menu)
 spoj=9
 k_litery={
         "A": 1,
@@ -118,5 +249,5 @@ k_litery={
         "J": 10,
     }
 
-ukladanie1(statek,spoj,litery)
+ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,i)
 plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
