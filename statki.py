@@ -22,12 +22,29 @@ def menu(w_menu):
         menu(w_menu)
     elif w_menu==2:
         wait()
+        ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,i)
         # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
         # menu(w_menu)
     elif w_menu==3:
         wait()
-        print(f"{niebieski}Ustawienia są obecnie niedostępne{biały}")
-        menu(w_menu)
+        print(f"{biały}===============================================================")
+        print("|                          USTAWIENIA                         |")
+        print("|                                                /|           |")
+        print(f"|   1 - Liczba statków w grze: {spoj}                / |           |")
+        print("|                                              /  |           |")
+        print("|                                             /_ _|           |")
+        print("|   0 - Powrót do ekr. startowego          _ _ _ _|_ _ _      |")
+        print("|                                          \ _ _ _ _ _ /      |")
+        print("| v.0.1.1                                                     |")
+        print("===============================================================")
+        ust=int(input("Wpisz cyrfę: "))
+        if ust==1:
+            print(f"Aktualna liczba statków w grze to: {spoj}")
+        elif ust==0:
+            wait()
+            menu(w_menu)    
+        # print(f"{niebieski}Ustawienia są obecnie niedostępne{biały}")
+        # menu(w_menu)
     else:
         wait()
         print(f"{czerwony}Podano nieprawdiłową liczbę{biały}")
@@ -234,7 +251,6 @@ l_set = str
 n_set = int
 kol = int
 i=0
-menu(w_menu)
 spoj=9
 k_litery={
         "A": 1,
@@ -248,6 +264,5 @@ k_litery={
         "I": 9,
         "J": 10,
     }
+menu(w_menu)
 
-ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,i)
-plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
