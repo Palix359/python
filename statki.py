@@ -3,7 +3,7 @@ import time
 def wait():
     time.sleep(0.5)
     os.system('cls')
-def menu(w_menu):
+def menu(w_menu,spoj,zm,ust):
     print(f"{biały}===============================================================")
     print(f"|                         {pogrubienie}GRA w STATKI{biały}                        |")
     print("|                                                /|           |")
@@ -12,43 +12,81 @@ def menu(w_menu):
     print("|    - Gra dwuosobowa   (wciśnij 2)           /_ _|           |")
     print("|    - Ustawienia       (wciśnij 3)        _ _ _ _|_ _ _      |")
     print("|                                          \ _ _ _ _ _ /      |")
-    print("| v.0.1.1                                                     |")
+    print("| v.0.1.2                                                     |")
     print("===============================================================")
 
     w_menu=int(input("Tutaj wpisz liczbę: "))
     if w_menu==1:
         wait()
         print(f"{niebieski}Gra jednoosobowa jest obecnie niedostępna{biały}")
-        menu(w_menu)
+        menu(w_menu,spoj,zm,ust)
     elif w_menu==2:
         wait()
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,i)
         # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
         # menu(w_menu)
     elif w_menu==3:
-        wait()
-        print(f"{biały}===============================================================")
-        print("|                          USTAWIENIA                         |")
-        print("|                                                /|           |")
-        print(f"|   1 - Liczba statków w grze: {spoj}                / |           |")
-        print("|                                              /  |           |")
-        print("|                                             /_ _|           |")
-        print("|   0 - Powrót do ekr. startowego          _ _ _ _|_ _ _      |")
-        print("|                                          \ _ _ _ _ _ /      |")
-        print("| v.0.1.1                                                     |")
-        print("===============================================================")
-        ust=int(input("Wpisz cyrfę: "))
-        if ust==1:
-            print(f"Aktualna liczba statków w grze to: {spoj}")
-        elif ust==0:
+        ust=100
+        while ust!=0:    
             wait()
-            menu(w_menu)    
+            print(f"{biały}===============================================================")
+            print("|                          USTAWIENIA                         |")
+            print("|                                                /|           |")
+            print(f"|   1 - Liczba statków w grze: {spoj}                / |           |")
+            print("|                                              /  |           |")
+            print("|                                             /_ _|           |")
+            print("|                                          _ _ _ _|_ _ _      |")
+            print("|   0 - Powrót do ekr. startowego          \ _ _ _ _ _ /      |")
+            print("|                                                             |")
+            print("===============================================================")
+            ust=int(input("Wpisz cyrfę: "))
+            if ust==1:
+                zm=int
+                zm=10
+                while zm!=0:
+                    wait()
+                    print(f"{biały}===============================================================")
+                    print("|                          USTAWIENIA                         |")
+                    print("|                                                /|           |")
+                    print(f"|  {pogrubienie}Aktualna liczba statków w grze:{biały} {spoj}            / |           |")
+                    print("|    | Aby zmienić wciśnij 1                   /  |           |")
+                    print("|                                             /_ _|           |")
+                    print("|                                          _ _ _ _|_ _ _      |")
+                    print("|   0 - Powrót do ustawień                 \ _ _ _ _ _ /      |")
+                    print("|                                                             |")
+                    print("===============================================================")
+                    zm=int(input("Tutaj wpisz cyrfę: "))
+                    if zm==1:
+                        spoj=int(input("Podaj nową liczbę statków w grze: "))
+                        while spoj>20:
+                            wait()
+                            print(f"{czerwony}Liczba statków nie może przekraczać 20!{biały}")
+                            time.sleep(2)
+                            spoj=int(input("Podaj nową liczbę statków: "))
+                        while spoj<4:
+                            wait()
+                            print(f"{czerwony}Liczba statków nie może być mniejsza niż 4!{biały}")
+                            time.sleep(2)
+                            spoj=int(input("Podaj nową liczbę statków: "))
+                        wait()
+                        print(f"{zielony}Nowa liczba statków ustawiona pomyślnie!{biały}")
+                        time.sleep(1)
+                    elif zm!=0:
+                        wait()
+                        print(f"{czerwony}Podano nieprawidłową cyfrę!{biały}")
+                        time.sleep(1)
+            elif ust==0:
+                wait()
+                menu(w_menu,spoj,zm,ust)
+            else:
+                print(f"{czerwony}Podano nieprawidłową liczbę!{biały}")
+                     
         # print(f"{niebieski}Ustawienia są obecnie niedostępne{biały}")
         # menu(w_menu)
     else:
         wait()
         print(f"{czerwony}Podano nieprawdiłową liczbę{biały}")
-        menu(w_menu)   
+        menu(w_menu,spoj,zm,ust)   
 def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
     print(*litery, sep='  ')
     print(*prow1)
@@ -252,6 +290,8 @@ n_set = int
 kol = int
 i=0
 spoj=9
+zm=int
+ust=int
 k_litery={
         "A": 1,
         "B": 2,
@@ -264,5 +304,5 @@ k_litery={
         "I": 9,
         "J": 10,
     }
-menu(w_menu)
+menu(w_menu,spoj,zm,ust)
 
