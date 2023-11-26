@@ -3,7 +3,7 @@ import time
 def wait():
     time.sleep(0.5)
     os.system('cls')
-def menu(w_menu,spoj,zm,ust):
+def menu(w_menu,spoj,zm,ust,limit):
     print(f"{biały}===============================================================")
     print(f"|                         {pogrubienie}GRA w STATKI{biały}                        |")
     print("|                                                /|           |")
@@ -19,7 +19,7 @@ def menu(w_menu,spoj,zm,ust):
     if w_menu==1:
         wait()
         print(f"{niebieski}Gra jednoosobowa jest obecnie niedostępna{biały}")
-        menu(w_menu,spoj,zm,ust)
+        menu(w_menu,spoj,zm,ust,limit)
     elif w_menu==2:
         wait()
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,i)
@@ -32,8 +32,19 @@ def menu(w_menu,spoj,zm,ust):
             print(f"{biały}===============================================================")
             print("|                          USTAWIENIA                         |")
             print("|                                                /|           |")
-            print(f"|   1 - Liczba statków w grze: {spoj}                / |           |")
-            print("|                                              /  |           |")
+            if spoj>9:
+                print(f"|  {pogrubienie}1 - Liczba statków w grze:{biały} {spoj}                / |           |")
+            else:
+                print(f"|  {pogrubienie}1 - Liczba statków w grze:{biały} {spoj}                 / |           |")
+            if limit==f"{czerwony}wył.{biały}":
+                print(f"|  {pogrubienie}2 - Limit trwania ruchu:{biały} {limit}               /  |           |")
+            else:
+                if limit>9 and limit<100:
+                    print(f"|  {pogrubienie}2 - Limit trwania ruchu:{biały} {limit}s                /  |           |")
+                elif limit>99:
+                    print(f"|  {pogrubienie}2 - Limit trwania ruchu:{biały} {limit}s               /  |           |")
+                else:
+                    print(f"|  {pogrubienie}2 - Limit trwania ruchu:{biały} {limit}s                  /  |           |")
             print("|                                             /_ _|           |")
             print("|                                          _ _ _ _|_ _ _      |")
             print("|   0 - Powrót do ekr. startowego          \ _ _ _ _ _ /      |")
@@ -46,9 +57,12 @@ def menu(w_menu,spoj,zm,ust):
                 while zm!=0:
                     wait()
                     print(f"{biały}===============================================================")
-                    print("|                          USTAWIENIA                         |")
+                    print("|                         STATKI w GRZE                       |")
                     print("|                                                /|           |")
-                    print(f"|  {pogrubienie}Aktualna liczba statków w grze:{biały} {spoj}            / |           |")
+                    if spoj>9:
+                        print(f"|  {pogrubienie}Aktualna liczba statków w grze:{biały} {spoj}           / |           |")
+                    else:
+                        print(f"|  {pogrubienie}Aktualna liczba statków w grze:{biały} {spoj}            / |           |") 
                     print("|    | Aby zmienić wciśnij 1                   /  |           |")
                     print("|                                             /_ _|           |")
                     print("|                                          _ _ _ _|_ _ _      |")
@@ -75,9 +89,56 @@ def menu(w_menu,spoj,zm,ust):
                         wait()
                         print(f"{czerwony}Podano nieprawidłową cyfrę!{biały}")
                         time.sleep(1)
+            elif ust==2:
+                zm=10
+                while zm!=0:
+                    wait()
+                    print(f"{biały}===============================================================")
+                    print("|                    LIMIT TRWANIA RUCHU                      |")
+                    print("|                                                /|           |")
+                    if limit==f"{czerwony}wył.{biały}":
+                        print(f"|  {pogrubienie}Aktualny limit trwania ruchu:{biały} {limit}           / |           |")
+                    else:
+                        if limit>9 and limit<100:
+                            print(f"|  {pogrubienie}Aktualny limit trwania ruchu:{biały} {limit}s            / |           |")
+                        elif limit>99:
+                            print(f"|  {pogrubienie}Aktualny limit trwania ruchu:{biały} {limit}s           / |           |")    
+                        else:
+                            print(f"|  {pogrubienie}Aktualny limit trwania ruchu:{biały} {limit}s             / |           |")
+                    print("|    | Aby zmienić/włączyć wciśnij 1           /  |           |")
+                    print("|    | Aby wyłączyć wciśnij 2                 /_ _|           |")
+                    print("|                                          _ _ _ _|_ _ _      |")
+                    print("|   0 - Powrót do ustawień                 \ _ _ _ _ _ /      |")
+                    print("|                                                             |")
+                    print("===============================================================")
+                    zm=int(input("Tutaj wpisz cyfrę: "))
+                    if zm==1:
+                        limit=int
+                        limit=int(input("Podaj nowy limit trwania ruchu (w sekundach): "))
+                        while limit>120:
+                            wait()
+                            print(f"{czerwony}Limit trwania ruchu nie może przekraczać 120 sekund!{biały}")
+                            time.sleep(2)
+                            limit=int(input("Podaj nowy limit trwania ruchu (w sekundach): "))
+                        while limit<10:
+                            wait()
+                            print(f"{czerwony}Limit trwania ruchu nie może być mniejszy niż 10 sekund!{biały}")
+                            time.sleep(2)
+                            limit=int(input("Podaj nowy limit trwania ruchu (w sekundach): "))
+                        wait()
+                        print(f"{zielony}Nowy limit trwannia ruchu ustawiony pomyślnie!{biały}")
+                        time.sleep(1)
+                    elif zm==2:
+                        limit=str
+                        limit=f"{czerwony}wył.{biały}"    
+                    elif zm!=0:
+                        wait()
+                        print(f"{czerwony}Podano nieprawidłową cyfrę!{biały}")
+                        time.sleep(1)
+                        
             elif ust==0:
                 wait()
-                menu(w_menu,spoj,zm,ust)
+                menu(w_menu,spoj,zm,ust,limit)
             else:
                 print(f"{czerwony}Podano nieprawidłową liczbę!{biały}")
                      
@@ -86,7 +147,7 @@ def menu(w_menu,spoj,zm,ust):
     else:
         wait()
         print(f"{czerwony}Podano nieprawdiłową liczbę{biały}")
-        menu(w_menu,spoj,zm,ust)   
+        menu(w_menu,spoj,zm,ust,limit)   
 def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
     print(*litery, sep='  ')
     print(*prow1)
@@ -292,6 +353,7 @@ i=0
 spoj=9
 zm=int
 ust=int
+limit=30
 k_litery={
         "A": 1,
         "B": 2,
@@ -304,5 +366,5 @@ k_litery={
         "I": 9,
         "J": 10,
     }
-menu(w_menu,spoj,zm,ust)
+menu(w_menu,spoj,zm,ust,limit)
 
