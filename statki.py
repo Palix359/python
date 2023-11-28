@@ -523,7 +523,6 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda):
         a=int
         a=1
         if n_set==1:
-            for x in range (0,3):
                 while a!=0: 
                     if gsprow1[kol]==t_woda or gsprow1[kol]==t_statek:
                         print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
@@ -547,7 +546,7 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda):
                         kol=k_litery[l_set]
                         kol=kol+1
                     else:
-                        if gsprow1[kol]==statek:
+                        if sprow1[kol]==statek:
                             gsprow1[kol]=t_statek
                             print(f"{zielony}Trafiony zatopiony!{biały}")
                             time.sleep(2)
@@ -555,7 +554,7 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda):
                             time.sleep(2)
                         else:
                             gsprow1[kol]=t_woda
-                            print(f"{zielony}Trafiony zatopiony!{biały}")
+                            print(f"{zielony}Pudło!{biały}")
                             time.sleep(2)
                             gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
                             time.sleep(2)
