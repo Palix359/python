@@ -19,12 +19,12 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
     if w_menu==1:
         wait()
         print(f"{niebieski}Gra jednoosobowa jest obecnie niedostępna{biały}")
-        menu(w_menu,spoj,spoj2,zm,ust,limit)
+        menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
     elif w_menu==2:
         wait()
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt)
         ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt)
-        gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda)
+        gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj)
         # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
         # menu(w_menu)
     elif w_menu==3:
@@ -146,7 +146,7 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
                         
             elif ust==0:
                 wait()
-                menu(w_menu,spoj,spoj2,zm,ust,limit)
+                menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
             else:
                 print(f"{czerwony}Podano nieprawidłową liczbę!{biały}")
                      
@@ -155,7 +155,7 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
     else:
         wait()
         print(f"{czerwony}Podano nieprawdiłową liczbę{biały}")
-        menu(w_menu,spoj,zm,ust,limit)   
+        menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2) 
 def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
     print(*litery, sep='  ')
     print(*prow1)
@@ -496,8 +496,9 @@ def ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt):
     print(f"{zielony}Oto twoja plansza: {biały}")
     plansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10)
     cnt=str(input(f"Jeśli chcesz przejść do gry wciśnij enter"))
-def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda):
+def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
     while stat!=0 or stat2!=0:
+        wait()
         print("=================")
         print("  RUCH GRACZA 1  ")
         print("=================")
@@ -532,6 +533,7 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda):
                         l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
                         l_set = l_set.upper()
                         while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
+                            wait()
                             print(f"{czerwony}Podałeś złą literę!{biały}")
                             time.sleep(1)
                             gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
@@ -539,6 +541,7 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda):
                             l_set=l_set.upper()
                         n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
                         while n_set<0 or n_set>10:
+                            wait()
                             print(f"{czerwony}Podałeś zły numer!{biały}")
                             time.sleep(1)
                             gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
@@ -548,16 +551,69 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda):
                     else:
                         if sprow1[kol]==statek:
                             gsprow1[kol]=t_statek
-                            print(f"{zielony}Trafiony zatopiony!{biały}")
+                            wait()
+                            if (sprow1[kol-1]==statek and gsprow1[kol-1]!=t_statek) or (sprow1[kol+1]==statek and gsprow1[kol+1]!=t_statek) or (sprow2[kol]==statek and gsprow2[kol]!=t_statek):
+                                print(f"{zielony}Trafiony!{biały}")
+                            else:
+                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
+                                e=kol-1
+                                while sprow1[e]!=woda:
+                                    e=e-1
+                                gsprow1[e]=t_woda
+                                e=kol+1
+                                while sprow1[e]!=woda:
+                                    e=e+1
+                                gsprow1[e]=t_woda
+                                if gsprow1[kol-1]==t_woda and gsprow1[kol+1]==t_woda:
+                                    e=2
+                                    if sprow2[kol]==statek:
+                                        gsprow2[kol-1]=t_woda
+                                        gsprow2[kol+1]=t_woda
+                                        e=3
+                                    if sprow3[kol]==statek:
+                                        gsprow3[kol-1]=t_woda
+                                        gsprow3[kol+1]=t_woda
+                                        e=4
+                                    if sprow4[kol]==statek:
+                                        gsprow4[kol-1]=t_woda
+                                        gsprow4[kol+1]=t_woda
+                                        e=5
+                                    if sprow5[kol]==statek:
+                                        gsprow5[kol-1]=t_woda
+                                        gsprow5[kol+1]=t_woda
+                                        e=6
+                                    if e==2:
+                                       gsprow2[kol]=t_woda
+                                       gsprow2[kol-1]=t_woda
+                                       gsprow2[kol+1]=t_woda
+                                    elif e==3:
+                                        gsprow3[kol]=t_woda
+                                        gsprow3[kol-1]=t_woda
+                                        gsprow3[kol+1]=t_woda
+                                    elif e==4:
+                                        gsprow4[kol]=t_woda
+                                        gsprow4[kol-1]=t_woda
+                                        gsprow4[kol+1]=t_woda
+                                    elif e==4:
+                                        gsprow4[kol]=t_woda
+                                        gsprow4[kol-1]=t_woda
+                                        gsprow4[kol+1]=t_woda
+                                    
+                                    
+                            
+                        
                             time.sleep(2)
                             gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
                             time.sleep(2)
+                            a=0
                         else:
                             gsprow1[kol]=t_woda
-                            print(f"{zielony}Pudło!{biały}")
+                            wait()
+                            print(f"{niebieski}Pudło!{biały}")
                             time.sleep(2)
                             gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
                             time.sleep(2)
+                            a=0
         elif n_set==2:
             a=kol-2
             for x in range (0,3):
@@ -696,7 +752,7 @@ gprow8=[8,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','�
 gprow9=[9,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 gprow10=[10,'','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 
-sprow1=[1,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow1=[1,' ','□ ','□ ','■ ','■ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 sprow2=[2,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 sprow3=[3,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 sprow4=[4,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
