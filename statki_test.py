@@ -530,8 +530,7 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
             row2_p = list
             row0_e = list
             row0_p = list
-            def __init__(self,stat2):
-                self.stat2=stat2
+            stat_local = 0
             def zrzucanie(self):
                 while self.a!=0: 
                     if self.row1_p[self.kol]==t_woda or self.row1_p[self.kol]==t_statek:
@@ -565,7 +564,7 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
                                 print(f"{zielony}Trafiony!{biały}")
                             else:
                                 print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
+                                self.stat_local+=1
                             time.sleep(2)
                             gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
                             time.sleep(2)
@@ -578,17 +577,26 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
                             gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
                             time.sleep(2)
                             self.a=0    
-
+        row1=akcja()
+        row1.kol=k_litery[l_set]+1
+        row1.row1_p=gsprow1
+        row1.row1_e=sprow1
+        row1.row0_p=litery
+        row1.row0_e=litery
+        row1.row2_p=gsprow2
+        row1.row2_e=sprow2
+        row2=akcja()
+        row2.kol=k_litery[l_set]+1
+        row2.row1_p=gsprow2
+        row2.row1_e=sprow2
+        row2.row0_p=gsprow1
+        row2.row0_e=sprow1
+        row2.row2_p=gsprow3
+        row2.row2_e=sprow3
         if n_set==1:
-                row1=akcja()
-                akcja.kol=k_litery[l_set]+1
-                akcja.row1_p=gsprow1
-                akcja.row1_e=sprow1
-                akcja.row0_p=litery
-                akcja.row0_e=litery
-                akcja.row2_p=gsprow2
-                akcja.row2_e=sprow2
-                print(row1.zrzucanie())
+            print(row1.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0
         elif n_set==2:
             print("Cześć, nie daj sie zjeść")
         elif n_set==3:
