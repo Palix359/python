@@ -12,7 +12,7 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
     print("|    - Gra dwuosobowa   (wciśnij 2)           /_ _|           |")
     print("|    - Ustawienia       (wciśnij 3)        _ _ _ _|_ _ _      |")
     print("|                                          \ _ _ _ _ _ /      |")
-    print("| v.0.1.2                                                     |")
+    print("| v.0.1.3                                                     |")
     print("===============================================================")
 
     w_menu=int(input("Tutaj wpisz liczbę: "))
@@ -500,7 +500,7 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
     while stat!=0 or stat2!=0:
         wait()
         print("=================")
-        print("  RUCH GRACZA 1  ")
+        print(f"  {niebieski}RUCH GRACZA 1{biały}  ")
         print("=================")
         time.sleep(1)
         wait()
@@ -532,7 +532,7 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
             row0_p = list
             stat_local = 0
             def zrzucanie(self):
-                while self.a!=0: 
+                while self.a!=0:
                     if self.row1_p[self.kol]==t_woda or self.row1_p[self.kol]==t_statek:
                         print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
                         time.sleep(2)
@@ -576,7 +576,8 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
                             time.sleep(2)
                             gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
                             time.sleep(2)
-                            self.a=0    
+                            self.a=0
+                return    
         row1=akcja()
         row1.kol=k_litery[l_set]+1
         row1.row1_p=gsprow1
@@ -593,380 +594,110 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
         row2.row0_e=sprow1
         row2.row2_p=gsprow3
         row2.row2_e=sprow3
+        row3=akcja()
+        row3.kol=k_litery[l_set]+1
+        row3.row1_p=gsprow3
+        row3.row1_e=sprow3
+        row3.row0_p=gsprow2
+        row3.row0_e=sprow2
+        row3.row2_p=gsprow4
+        row3.row2_e=sprow4
+        row4=akcja()
+        row4.kol=k_litery[l_set]+1
+        row4.row1_p=gsprow4
+        row4.row1_e=sprow4
+        row4.row0_p=gsprow3
+        row4.row0_e=sprow3
+        row4.row2_p=gsprow5
+        row4.row2_e=sprow5
+        row5=akcja()
+        row5.kol=k_litery[l_set]+1
+        row5.row1_p=gsprow5
+        row5.row1_e=sprow5
+        row5.row0_p=gsprow4
+        row5.row0_e=sprow4
+        row5.row2_p=gsprow6
+        row5.row2_e=sprow6
+        row6=akcja()
+        row6.kol=k_litery[l_set]+1
+        row6.row1_p=gsprow6
+        row6.row1_e=sprow6
+        row6.row0_p=gsprow5
+        row6.row0_e=sprow5
+        row6.row2_p=gsprow7
+        row6.row2_e=sprow7
+        row7=akcja()
+        row7.kol=k_litery[l_set]+1
+        row7.row1_p=gsprow7
+        row7.row1_e=sprow7
+        row7.row0_p=gsprow6
+        row7.row0_e=sprow6
+        row7.row2_p=gsprow8
+        row7.row2_e=sprow8
+        row8=akcja()
+        row8.kol=k_litery[l_set]+1
+        row8.row1_p=gsprow8
+        row8.row1_e=sprow8
+        row8.row0_p=gsprow7
+        row8.row0_e=sprow7
+        row8.row2_p=gsprow9
+        row8.row2_e=sprow9
+        row9=akcja()
+        row9.kol=k_litery[l_set]+1
+        row9.row1_p=gsprow9
+        row9.row1_e=sprow9
+        row9.row0_p=gsprow8
+        row9.row0_e=sprow8
+        row9.row2_p=gsprow10
+        row9.row2_e=sprow10
+        row10=akcja()
+        row10.kol=k_litery[l_set]+1
+        row10.row1_p=gsprow10
+        row10.row1_e=sprow10
+        row10.row0_p=gsprow9
+        row10.row0_e=sprow9
+        row10.row2_p=litery
+        row10.row2_e=litery
         if n_set==1:
             print(row1.zrzucanie())
+            stat2=stat2-row1.stat_local
+            row1.stat_local=0
+        elif n_set==2:
+            print(row2.zrzucanie())
             stat2=stat2-akcja.stat_local
             akcja.stat_local=0
-        elif n_set==2:
-            print("Cześć, nie daj sie zjeść")
         elif n_set==3:
-            while a!=0: 
-                    if gsprow3[kol]==t_woda or gsprow3[kol]==t_statek:
-                        print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
-                        time.sleep(2)
-                        wait()
-                        gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                        l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
-                        l_set = l_set.upper()
-                        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
-                            wait()
-                            print(f"{czerwony}Podałeś złą literę!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
-                            l_set=l_set.upper()
-                        n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
-                        while n_set<0 or n_set>10:
-                            wait()
-                            print(f"{czerwony}Podałeś zły numer!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
-                        kol=k_litery[l_set]
-                        kol=kol+1
-                    else:
-                        if sprow3[kol]==statek:
-                            gsprow3[kol]=t_statek
-                            wait()
-                            if (sprow3[kol-1]==statek and gsprow3[kol-1]!=t_statek) or (sprow3[kol+1]==statek and gsprow3[kol+1]!=t_statek) or (sprow4[kol]==statek and gsprow4[kol]!=t_statek) or (sprow2[kol]==statek and gsprow2[kol]!=t_statek):
-                                print(f"{zielony}Trafiony!{biały}")
-                            else:
-                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
-                                time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
-                        else:
-                            gsprow3[kol]=t_woda
-                            wait()
-                            print(f"{niebieski}Pudło!{biały}")
-                            time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
+            print(row3.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0
         elif n_set==4:
-            while a!=0: 
-                    if gsprow4[kol]==t_woda or gsprow4[kol]==t_statek:
-                        print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
-                        time.sleep(2)
-                        wait()
-                        gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                        l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
-                        l_set = l_set.upper()
-                        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
-                            wait()
-                            print(f"{czerwony}Podałeś złą literę!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
-                            l_set=l_set.upper()
-                        n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
-                        while n_set<0 or n_set>10:
-                            wait()
-                            print(f"{czerwony}Podałeś zły numer!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
-                        kol=k_litery[l_set]
-                        kol=kol+1
-                    else:
-                        if sprow4[kol]==statek:
-                            gsprow4[kol]=t_statek
-                            wait()
-                            if (sprow4[kol-1]==statek and gsprow4[kol-1]!=t_statek) or (sprow4[kol+1]==statek and gsprow4[kol+1]!=t_statek) or (sprow5[kol]==statek and gsprow5[kol]!=t_statek) or (sprow3[kol]==statek and gsprow3[kol]!=t_statek):
-                                print(f"{zielony}Trafiony!{biały}")
-                            else:
-                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
-                                time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
-                        else:
-                            gsprow4[kol]=t_woda
-                            wait()
-                            print(f"{niebieski}Pudło!{biały}")
-                            time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0         
+            print(row3.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0        
         elif n_set==5:
-            while a!=0: 
-                    if gsprow5[kol]==t_woda or gsprow5[kol]==t_statek:
-                        print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
-                        time.sleep(2)
-                        wait()
-                        gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                        l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
-                        l_set = l_set.upper()
-                        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
-                            wait()
-                            print(f"{czerwony}Podałeś złą literę!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
-                            l_set=l_set.upper()
-                        n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
-                        while n_set<0 or n_set>10:
-                            wait()
-                            print(f"{czerwony}Podałeś zły numer!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
-                        kol=k_litery[l_set]
-                        kol=kol+1
-                    else:
-                        if sprow5[kol]==statek:
-                            gsprow5[kol]=t_statek
-                            wait()
-                            if (sprow5[kol-1]==statek and gsprow5[kol-1]!=t_statek) or (sprow5[kol+1]==statek and gsprow5[kol+1]!=t_statek) or (sprow6[kol]==statek and gsprow6[kol]!=t_statek) or (sprow4[kol]==statek and gsprow4[kol]!=t_statek):
-                                print(f"{zielony}Trafiony!{biały}")
-                            else:
-                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
-                                time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
-                        else:
-                            gsprow5[kol]=t_woda
-                            wait()
-                            print(f"{niebieski}Pudło!{biały}")
-                            time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
+            print(row5.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0
         elif n_set==6:
-            while a!=0: 
-                    if gsprow6[kol]==t_woda or gsprow6[kol]==t_statek:
-                        print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
-                        time.sleep(2)
-                        wait()
-                        gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                        l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
-                        l_set = l_set.upper()
-                        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
-                            wait()
-                            print(f"{czerwony}Podałeś złą literę!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
-                            l_set=l_set.upper()
-                        n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
-                        while n_set<0 or n_set>10:
-                            wait()
-                            print(f"{czerwony}Podałeś zły numer!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
-                        kol=k_litery[l_set]
-                        kol=kol+1
-                    else:
-                        if sprow6[kol]==statek:
-                            gsprow6[kol]=t_statek
-                            wait()
-                            if (sprow6[kol-1]==statek and gsprow6[kol-1]!=t_statek) or (sprow6[kol+1]==statek and gsprow6[kol+1]!=t_statek) or (sprow7[kol]==statek and gsprow7[kol]!=t_statek) or (sprow5[kol]==statek and gsprow5[kol]!=t_statek):
-                                print(f"{zielony}Trafiony!{biały}")
-                            else:
-                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
-                                time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
-                        else:
-                            gsprow5[kol]=t_woda
-                            wait()
-                            print(f"{niebieski}Pudło!{biały}")
-                            time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
+            print(row6.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0
         elif n_set==7:
-            while a!=0: 
-                    if gsprow7[kol]==t_woda or gsprow7[kol]==t_statek:
-                        print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
-                        time.sleep(2)
-                        wait()
-                        gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                        l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
-                        l_set = l_set.upper()
-                        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
-                            wait()
-                            print(f"{czerwony}Podałeś złą literę!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
-                            l_set=l_set.upper()
-                        n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
-                        while n_set<0 or n_set>10:
-                            wait()
-                            print(f"{czerwony}Podałeś zły numer!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
-                        kol=k_litery[l_set]
-                        kol=kol+1
-                    else:
-                        if sprow7[kol]==statek:
-                            gsprow7[kol]=t_statek
-                            wait()
-                            if (sprow7[kol-1]==statek and gsprow7[kol-1]!=t_statek) or (sprow7[kol+1]==statek and gsprow7[kol+1]!=t_statek) or (sprow8[kol]==statek and gsprow8[kol]!=t_statek) or (sprow6[kol]==statek and gsprow6[kol]!=t_statek):
-                                print(f"{zielony}Trafiony!{biały}")
-                            else:
-                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
-                                time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
-                        else:
-                            gsprow7[kol]=t_woda
-                            wait()
-                            print(f"{niebieski}Pudło!{biały}")
-                            time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
+            print(row7.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0
         elif n_set==8:
-            while a!=0: 
-                    if gsprow8[kol]==t_woda or gsprow8[kol]==t_statek:
-                        print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
-                        time.sleep(2)
-                        wait()
-                        gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                        l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
-                        l_set = l_set.upper()
-                        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
-                            wait()
-                            print(f"{czerwony}Podałeś złą literę!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
-                            l_set=l_set.upper()
-                        n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
-                        while n_set<0 or n_set>10:
-                            wait()
-                            print(f"{czerwony}Podałeś zły numer!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
-                        kol=k_litery[l_set]
-                        kol=kol+1
-                    else:
-                        if sprow8[kol]==statek:
-                            gsprow8[kol]=t_statek
-                            wait()
-                            if (sprow8[kol-1]==statek and gsprow8[kol-1]!=t_statek) or (sprow8[kol+1]==statek and gsprow8[kol+1]!=t_statek) or (sprow9[kol]==statek and gsprow9[kol]!=t_statek) or (sprow7[kol]==statek and gsprow7[kol]!=t_statek):
-                                print(f"{zielony}Trafiony!{biały}")
-                            else:
-                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
-                                time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
-                        else:
-                            gsprow8[kol]=t_woda
-                            wait()
-                            print(f"{niebieski}Pudło!{biały}")
-                            time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
+            print(row8.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0
         elif n_set==9:
-            while a!=0: 
-                    if gsprow9[kol]==t_woda or gsprow9[kol]==t_statek:
-                        print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
-                        time.sleep(2)
-                        wait()
-                        gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                        l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
-                        l_set = l_set.upper()
-                        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
-                            wait()
-                            print(f"{czerwony}Podałeś złą literę!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
-                            l_set=l_set.upper()
-                        n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
-                        while n_set<0 or n_set>10:
-                            wait()
-                            print(f"{czerwony}Podałeś zły numer!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
-                        kol=k_litery[l_set]
-                        kol=kol+1
-                    else:
-                        if sprow9[kol]==statek:
-                            gsprow9[kol]=t_statek
-                            wait()
-                            if (sprow9[kol-1]==statek and gsprow9[kol-1]!=t_statek) or (sprow9[kol+1]==statek and gsprow9[kol+1]!=t_statek) or (sprow10[kol]==statek and gsprow10[kol]!=t_statek) or (sprow8[kol]==statek and gsprow8[kol]!=t_statek):
-                                print(f"{zielony}Trafiony!{biały}")
-                            else:
-                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
-                                time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
-                        else:
-                            gsprow9[kol]=t_woda
-                            wait()
-                            print(f"{niebieski}Pudło!{biały}")
-                            time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
+            print(row9.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0
         else:
-            while a!=0: 
-                    if gsprow10[kol]==t_woda or gsprow10[kol]==t_statek:
-                        print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
-                        time.sleep(2)
-                        wait()
-                        gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                        l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
-                        l_set = l_set.upper()
-                        while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
-                            wait()
-                            print(f"{czerwony}Podałeś złą literę!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
-                            l_set=l_set.upper()
-                        n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
-                        while n_set<0 or n_set>10:
-                            wait()
-                            print(f"{czerwony}Podałeś zły numer!{biały}")
-                            time.sleep(1)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
-                        kol=k_litery[l_set]
-                        kol=kol+1
-                    else:
-                        if sprow10[kol]==statek:
-                            gsprow10[kol]=t_statek
-                            wait()
-                            if (sprow10[kol-1]==statek and gsprow10[kol-1]!=t_statek) or (sprow10[kol+1]==statek and gsprow10[kol+1]!=t_statek) or (sprow9[kol]==statek and gsprow9[kol]!=t_statek):
-                                print(f"{zielony}Trafiony!{biały}")
-                            else:
-                                print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
-                                stat2=stat2-1
-                                time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
-                        else:
-                            gsprow10[kol]=t_woda
-                            wait()
-                            print(f"{niebieski}Pudło!{biały}")
-                            time.sleep(2)
-                            gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10)
-                            time.sleep(2)
-                            a=0
+            print(row10.zrzucanie())
+            stat2=stat2-akcja.stat_local
+            akcja.stat_local=0
         wait()
         print("=================")
         print(f"{niebieski}  RUCH GRACZA 2  {biały}")
