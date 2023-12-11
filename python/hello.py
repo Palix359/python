@@ -72,22 +72,22 @@ for i in range(3):
 
 for i in range(3):
     print("Numer: ", i+1) #teraz wypisujemy od 1 do 3
-
+print('######')
 for i in range(1, 100): #nie jest uwzgęldniona 100 (przedział otwarty)
  if i%2==0:
      print(i)
-
-for i in range(1, 101, 2):
+print('######')
+for i in range(1, 101, 5):
     print(i)
-
-for i in range(100, 0, -1):
+print('######')
+for i in range(100, 0, -2):
     print(i)
-
+print('######')
 for litera in "slowo":
     if litera=="o":
         break
     print(litera)
-
+print('######')
 for litera in "slowo":
     if litera=="o":
         continue 
