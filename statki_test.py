@@ -582,6 +582,7 @@ class akcja():
                                 wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
                                 time.sleep(2)
                                 self.a=0
+
                 def zrzucanie_g2(self):
                     while self.a!=0:
                         wait()
@@ -631,6 +632,7 @@ class akcja():
                                 wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10,gprow1,gprow2,gprow3,gprow4,gprow5,gprow6,gprow7,gprow8,gprow9,gprow10)
                                 time.sleep(2)
                                 self.a=0
+                                i2=0
 def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
     while stat!=0 or stat2!=0:
         i1=1
@@ -743,37 +745,54 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
             row10.row2_e=litery
             if n_set==1:
                 row1.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
+                stat2=stat2-row1.stat_local
+                i1=row1.stat_local
+                row1.stat_local=0
             elif n_set==2:
                 row2.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
+                stat2=stat2-row2.stat_local
+                i1=row2.stat_local
+                row2.stat_local=0
             elif n_set==3:
                 row3.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
+                stat2=stat2-row3.stat_local
+                i1=row3.stat_local
+                row3.stat_local=0
             elif n_set==4:
                 row4.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local      
+                stat2=stat2-row4.stat_local
+                i1=row4.stat_local
+                row4.stat_local=0        
             elif n_set==5:
                 row5.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
+                stat2=stat2-row5.stat_local
+                i1=row5.stat_local
+                row5.stat_local=0
             elif n_set==6:
                 row6.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
+                stat2=stat2-row6.stat_local
+                i1=row6.stat_local
+                row6.stat_local=0
             elif n_set==7:
                 row7.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
+                stat2=stat2-row7.stat_local
+                i1=row7.stat_local
+                row7.stat_local=0
             elif n_set==8:
                 row8.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
+                stat2=stat2-row8.stat_local
+                i1=row8.stat_local
+                row8.stat_local=0
             elif n_set==9:
                 row9.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
+                stat2=stat2-row9.stat_local
+                i1=row9.stat_local
+                row9.stat_local=0
             else:
                 row10.zrzucanie_g1()
-                stat2=stat2-akcja.stat_local
-            if akcja.stat_local==1:
-                i1=0
-            akcja.stat_local=0
+                stat2=stat2-row10.stat_local
+                i1=row10.stat_local
+                row10.stat_local=0
         while i2!=0:
             wait()
             print("=================")
@@ -873,45 +892,55 @@ def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
             if n_set==1:
                 row1.zrzucanie_g2()
                 stat=stat-row1.stat_local
+                i2=row1.stat_local
                 row1.stat_local=0
             elif n_set==2:
                 row2.zrzucanie_g2()
                 stat=stat-row2.stat_local
+                i2=row2.stat_local
                 row2.stat_local=0
             elif n_set==3:
                 row3.zrzucanie_g2()
                 stat=stat-row3.stat_local
+                i2=row3.stat_local
                 row3.stat_local=0
             elif n_set==4:
                 row4.zrzucanie_g2()
                 stat=stat-row4.stat_local
+                i2=row4.stat_local
                 row4.stat_local=0        
             elif n_set==5:
                 row5.zrzucanie_g2()
                 stat=stat-row5.stat_local
+                i2=row5.stat_local
                 row5.stat_local=0
             elif n_set==6:
                 row6.zrzucanie_g2()
                 stat=stat-row6.stat_local
+                i2=row6.stat_local
                 row6.stat_local=0
             elif n_set==7:
                 row7.zrzucanie_g2()
                 stat=stat-row7.stat_local
+                i2=row7.stat_local
                 row7.stat_local=0
             elif n_set==8:
                 row8.zrzucanie_g2()
                 stat=stat-row8.stat_local
+                i2=row8.stat_local
                 row8.stat_local=0
             elif n_set==9:
                 row9.zrzucanie_g2()
                 stat=stat-row9.stat_local
+                i2=row9.stat_local
                 row9.stat_local=0
             else:
                 row10.zrzucanie_g2()
-                stat=stat-akcja.stat_local
-            if akcja.stat_local==1:
-                i1=0
-            akcja.stat_local=0
+                stat=stat-row10.stat_local
+                i2=row10.stat_local
+                row10.stat_local=0
+
+        
 
 
 czerwony = "\033[1;31m"
