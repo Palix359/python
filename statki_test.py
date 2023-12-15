@@ -2,7 +2,7 @@ import os
 import time
 def wait():
     time.sleep(0.5)
-    os.system('clear')
+    os.system('cls')
 def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
     print(f"{biały}===============================================================")
     print(f"|                         {pogrubienie}GRA w STATKI{biały}                        |")
