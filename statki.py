@@ -1058,6 +1058,13 @@ k_litery={
         "H": 8,
         "I": 9,
         "J": 10,
-}
+} 
+# print(f"                 UWAGA!                ")
+# print("W programie aktualnie nie znajdują się ")
+# print(" zabezpieczenia przeciwko wprowadzeniu ")
+# print(" do zmiennej danych tekstowych zamiast ")
+# print("liczbowych przez użytkownika, zachowaj ")
+# print("więc szczególną uwagę")
+
 menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
 
