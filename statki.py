@@ -1,5 +1,6 @@
 import os
 import time
+import random
 def wait():
     time.sleep(0.5)
     os.system('cls')
@@ -19,13 +20,127 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
     w_menu=int(input("Tutaj wpisz liczbę: "))
     if w_menu==1:
         wait()
-        print(f"{niebieski}Gra jednoosobowa jest obecnie niedostępna{biały}")
-        menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
+        # print(f"{niebieski}Gra jednoosobowa jest obecnie niedostępna{biały}")
+        # menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
+        ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt)
+        wait()
+        print(f"{niebieski}Trwa układanie statków przez komputer...")
+        kol=k_litery[l_set]
+        kol=kol+1
+        a=int
+        if n_set==1:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow1[a]==statek or sprow2[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj2=spoj2+1
+                    break
+                if a==kol+1:
+                    sprow1[kol]=statek
+        elif n_set==2:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow1[a]==statek or sprow2[a]==statek or sprow3[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj2=spoj2+1
+                    break
+                if a==kol+1:
+                    sprow2[kol]=statek
+        elif n_set==3:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow2[a]==statek or sprow3[a]==statek or sprow4[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj2=spoj2+1
+                    break
+                if a==kol+1:
+                    sprow3[kol]=statek
+        elif n_set==4:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow3[a]==statek or sprow4[a]==statek or sprow5[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj2=spoj2+1
+                    break
+                if a==kol+1:
+                    sprow4[kol]=statek          
+        elif n_set==5:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow4[a]==statek or sprow5[a]==statek or sprow6[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj2=spoj2+1
+                    break
+                if a==kol+1:
+                    sprow5[kol]=statek 
+        elif n_set==6:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow5[a]==statek or sprow6[a]==statek or sprow7[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    spoj2=spoj2+1
+                    break
+                if a==kol+1:
+                    sprow6[kol]=statek
+        elif n_set==7:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow6[a]==statek or sprow7[a]==statek or sprow8[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    break
+                if a==kol+1:
+                    sprow7[kol]=statek
+        elif n_set==8:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow7[a]==statek or sprow8[a]==statek or sprow9[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    break
+                a==kol+1
+                sprow8[kol]=statek
+        elif n_set==9:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow8[a]==statek or sprow9[a]==statek or sprow10[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    break
+                a==kol+1
+                sprow9[kol]=statek
+        else:
+            a=kol-2
+            for x in range (0,3):
+                a=a+1 
+                while sprow9[a]==statek or sprow10[a]==statek:
+                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
+                    time.sleep(2)
+                    break
+                a==kol+1
+                sprow10[kol]=statek
+        spoj=spoj-1
+
     elif w_menu==2:
         wait()
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt)
         ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt)
-        gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj)
+        gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj)
         # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
         # menu(w_menu)
     elif w_menu==3:
@@ -378,6 +493,7 @@ def ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt):
     plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
     cnt=str(input(f"Jeśli chcesz przejść do układania statków przez 2 gracza wciśnij enter"))    
 def ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt):
+
     
     wait()
     print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
@@ -524,6 +640,8 @@ def ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt):
     print(f"{zielony}Oto twoja plansza: {biały}")
     plansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10)
     cnt=str(input(f"Jeśli chcesz przejść do gry wciśnij enter"))
+def ukladaniepc():
+    print("Komputer układa swoją plansze...")
 class akcja():
                 a=1
                 kol=int
@@ -634,7 +752,7 @@ class akcja():
                                 time.sleep(2)
                                 self.a=0
                                 i2=0
-def gra(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
+def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
     start=time.time()
     while stat!=0 and stat2!=0:
         i1=1
