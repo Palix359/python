@@ -3,8 +3,8 @@ import time
 import random
 def wait():
     time.sleep(0.5)
-    os.system('cls')
-def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
+    os.system('clear')
+def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m):
     wait()
     print(f"{biały}===============================================================")
     print(f"|                         {pogrubienie}GRA w STATKI{biały}                        |")
@@ -14,7 +14,7 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
     print("|    - Gra dwuosobowa   (wciśnij 2)           /_ _|           |")
     print("|    - Ustawienia       (wciśnij 3)        _ _ _ _|_ _ _      |")
     print("|                                          \ _ _ _ _ _ /      |")
-    print("| v.0.2.0                                                     |")
+    print("| v.0.2.1                                                     |")
     print("===============================================================")
 
     w_menu=int(input("Tutaj wpisz liczbę: "))
@@ -24,117 +24,428 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
         # menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt)
         wait()
-        print(f"{niebieski}Trwa układanie statków przez komputer...")
-        kol=k_litery[l_set]
-        kol=kol+1
-        a=int
-        if n_set==1:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow1[a]==statek or sprow2[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    spoj2=spoj2+1
-                    break
-                if a==kol+1:
-                    sprow1[kol]=statek
-        elif n_set==2:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow1[a]==statek or sprow2[a]==statek or sprow3[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    spoj2=spoj2+1
-                    break
-                if a==kol+1:
-                    sprow2[kol]=statek
-        elif n_set==3:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow2[a]==statek or sprow3[a]==statek or sprow4[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    spoj2=spoj2+1
-                    break
-                if a==kol+1:
-                    sprow3[kol]=statek
-        elif n_set==4:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow3[a]==statek or sprow4[a]==statek or sprow5[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    spoj2=spoj2+1
-                    break
-                if a==kol+1:
-                    sprow4[kol]=statek          
-        elif n_set==5:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow4[a]==statek or sprow5[a]==statek or sprow6[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    spoj2=spoj2+1
-                    break
-                if a==kol+1:
-                    sprow5[kol]=statek 
-        elif n_set==6:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow5[a]==statek or sprow6[a]==statek or sprow7[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    spoj2=spoj2+1
-                    break
-                if a==kol+1:
-                    sprow6[kol]=statek
-        elif n_set==7:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow6[a]==statek or sprow7[a]==statek or sprow8[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    break
-                if a==kol+1:
-                    sprow7[kol]=statek
-        elif n_set==8:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow7[a]==statek or sprow8[a]==statek or sprow9[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    break
-                a==kol+1
-                sprow8[kol]=statek
-        elif n_set==9:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow8[a]==statek or sprow9[a]==statek or sprow10[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    break
-                a==kol+1
-                sprow9[kol]=statek
+        spoj=spoj2
+        print(f"{niebieski}Trwa ustawianie statków przez komputer...{biały}")
+        while spoj2!=0:
+            n_set=random.randrange(1,10)
+            kol=random.randrange(1,10)+1
+            if n_set==1:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow1[a]==statek or sprow2[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow1[kol]=statek
+            elif n_set==2:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow1[a]==statek or sprow2[a]==statek or sprow3[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow2[kol]=statek
+            elif n_set==3:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow2[a]==statek or sprow3[a]==statek or sprow4[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow3[kol]=statek
+            elif n_set==4:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow3[a]==statek or sprow4[a]==statek or sprow5[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow4[kol]=statek          
+            elif n_set==5:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow4[a]==statek or sprow5[a]==statek or sprow6[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow5[kol]=statek 
+            elif n_set==6:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow5[a]==statek or sprow6[a]==statek or sprow7[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow6[kol]=statek
+            elif n_set==7:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow6[a]==statek or sprow7[a]==statek or sprow8[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow7[kol]=statek
+            elif n_set==8:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow7[a]==statek or sprow8[a]==statek or sprow9[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow8[kol]=statek
+            elif n_set==9:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow8[a]==statek or sprow9[a]==statek or sprow10[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow9[kol]=statek
+            else:
+                a=kol-2
+                for x in range (0,3):
+                    a=a+1 
+                    if sprow9[a]==statek or sprow10[a]==statek:
+                        spoj2=spoj2+1
+                        m=1
+                    elif a==kol+1 and m!=1:
+                        sprow10[kol]=statek   
+            spoj2=spoj2-1
+            m=0
+        time.sleep(2)
+        print(f"{zielony}Statki zostały ułożone!{biały}")
+        time.sleep(2)
+        spoj2=spoj
+        wait()
+        start=time.time()
+        while stat!=0 and stat2!=0:
+            i1=1
+            i2=1
+            while i1!=0 and stat2!=0: #Powtarzanie ruchu po trafieniu nie działa gdy długość statków jest większa od 1
+                wait()
+                print("=================")
+                print(f"  {niebieski}RUCH GRACZA 1{biały}  ")
+                print("=================")
+                time.sleep(1)
+                wait()
+                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                l_set=str(input("Podaj literę kolumny, na którą chcesz zrzucić bombę: "))
+                l_set = l_set.upper()
+                while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
+                    wait()
+                    print(f"{czerwony}Podałeś złą literę!{biały}")
+                    time.sleep(1)
+                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                    l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
+                    l_set=l_set.upper()
+                n_set=int(input("Podaj numer wiersza, na który chcesz zrzucić bombę: "))
+                while n_set<0 or n_set>10:
+                    wait()
+                    print(f"{czerwony}Podałeś zły numer!{biały}")
+                    time.sleep(1)
+                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                    n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
+                kol=k_litery[l_set]
+                kol=kol+1 
+                row1=akcja()
+                row1.kol=k_litery[l_set]+1
+                row1.row1_p=gsprow1
+                row1.row1_e=sprow1
+                row1.row0_p=litery
+                row1.row0_e=litery
+                row1.row2_p=gsprow2
+                row1.row2_e=sprow2
+                row2=akcja()
+                row2.kol=k_litery[l_set]+1
+                row2.row1_p=gsprow2
+                row2.row1_e=sprow2
+                row2.row0_p=gsprow1
+                row2.row0_e=sprow1
+                row2.row2_p=gsprow3
+                row2.row2_e=sprow3
+                row3=akcja()
+                row3.kol=k_litery[l_set]+1
+                row3.row1_p=gsprow3
+                row3.row1_e=sprow3
+                row3.row0_p=gsprow2
+                row3.row0_e=sprow2
+                row3.row2_p=gsprow4
+                row3.row2_e=sprow4
+                row4=akcja()
+                row4.kol=k_litery[l_set]+1
+                row4.row1_p=gsprow4
+                row4.row1_e=sprow4
+                row4.row0_p=gsprow3
+                row4.row0_e=sprow3
+                row4.row2_p=gsprow5
+                row4.row2_e=sprow5
+                row5=akcja()
+                row5.kol=k_litery[l_set]+1
+                row5.row1_p=gsprow5
+                row5.row1_e=sprow5
+                row5.row0_p=gsprow4
+                row5.row0_e=sprow4
+                row5.row2_p=gsprow6
+                row5.row2_e=sprow6
+                row6=akcja()
+                row6.kol=k_litery[l_set]+1
+                row6.row1_p=gsprow6
+                row6.row1_e=sprow6
+                row6.row0_p=gsprow5
+                row6.row0_e=sprow5
+                row6.row2_p=gsprow7
+                row6.row2_e=sprow7
+                row7=akcja()
+                row7.kol=k_litery[l_set]+1
+                row7.row1_p=gsprow7
+                row7.row1_e=sprow7
+                row7.row0_p=gsprow6
+                row7.row0_e=sprow6
+                row7.row2_p=gsprow8
+                row7.row2_e=sprow8
+                row8=akcja()
+                row8.kol=k_litery[l_set]+1
+                row8.row1_p=gsprow8
+                row8.row1_e=sprow8
+                row8.row0_p=gsprow7
+                row8.row0_e=sprow7
+                row8.row2_p=gsprow9
+                row8.row2_e=sprow9
+                row9=akcja()
+                row9.kol=k_litery[l_set]+1
+                row9.row1_p=gsprow9
+                row9.row1_e=sprow9
+                row9.row0_p=gsprow8
+                row9.row0_e=sprow8
+                row9.row2_p=gsprow10
+                row9.row2_e=sprow10
+                row10=akcja()
+                row10.kol=k_litery[l_set]+1
+                row10.row1_p=gsprow10
+                row10.row1_e=sprow10
+                row10.row0_p=gsprow9
+                row10.row0_e=sprow9
+                row10.row2_p=litery
+                row10.row2_e=litery
+                if n_set==1:
+                    row1.zrzucanie_g1()
+                    stat2=stat2-row1.stat_local
+                    i1=row1.stat_local
+                    row1.stat_local=0
+                elif n_set==2:
+                    row2.zrzucanie_g1()
+                    stat2=stat2-row2.stat_local
+                    i1=row2.stat_local
+                    row2.stat_local=0
+                elif n_set==3:
+                    row3.zrzucanie_g1()
+                    stat2=stat2-row3.stat_local
+                    i1=row3.stat_local
+                    row3.stat_local=0
+                elif n_set==4:
+                    row4.zrzucanie_g1()
+                    stat2=stat2-row4.stat_local
+                    i1=row4.stat_local
+                    row4.stat_local=0        
+                elif n_set==5:
+                    row5.zrzucanie_g1()
+                    stat2=stat2-row5.stat_local
+                    i1=row5.stat_local
+                    row5.stat_local=0
+                elif n_set==6:
+                    row6.zrzucanie_g1()
+                    stat2=stat2-row6.stat_local
+                    i1=row6.stat_local
+                    row6.stat_local=0
+                elif n_set==7:
+                    row7.zrzucanie_g1()
+                    stat2=stat2-row7.stat_local
+                    i1=row7.stat_local
+                    row7.stat_local=0
+                elif n_set==8:
+                    row8.zrzucanie_g1()
+                    stat2=stat2-row8.stat_local
+                    i1=row8.stat_local
+                    row8.stat_local=0
+                elif n_set==9:
+                    row9.zrzucanie_g1()
+                    stat2=stat2-row9.stat_local
+                    i1=row9.stat_local
+                    row9.stat_local=0
+                else:
+                    row10.zrzucanie_g1()
+                    stat2=stat2-row10.stat_local
+                    i1=row10.stat_local
+                    row10.stat_local=0
+            while i2!=0 and stat!=0:
+                wait()
+                print("=================")
+                print(f"{niebieski} RUCH KOMPUTERA {biały}")
+                print("=================")
+                time.sleep(1)
+                kol=random.randrange(1,10)
+                n_set=random.randrange(1,10)
+                kol=kol+1
+                row1.kol=k_litery[l_set]+1
+                row1.row1_p=gprow1
+                row1.row1_e=prow1
+                row1.row0_p=litery
+                row1.row0_e=litery
+                row1.row2_p=gprow2
+                row1.row2_e=prow2
+                row2.kol=k_litery[l_set]+1
+                row2.row1_p=gprow2
+                row2.row1_e=prow2
+                row2.row0_p=gprow1
+                row2.row0_e=prow1
+                row2.row2_p=gprow3
+                row2.row2_e=prow3
+                row3.kol=k_litery[l_set]+1
+                row3.row1_p=gprow3
+                row3.row1_e=prow3
+                row3.row0_p=gprow2
+                row3.row0_e=prow2
+                row3.row2_p=gprow4
+                row3.row2_e=prow4
+                row4.kol=k_litery[l_set]+1
+                row4.row1_p=gprow4
+                row4.row1_e=prow4
+                row4.row0_p=gprow3
+                row4.row0_e=prow3
+                row4.row2_p=gprow5
+                row4.row2_e=prow5
+                row5.kol=k_litery[l_set]+1
+                row5.row1_p=gprow5
+                row5.row1_e=prow5
+                row5.row0_p=gprow4
+                row5.row0_e=prow4
+                row5.row2_p=gprow6
+                row5.row2_e=prow6
+                row6.kol=k_litery[l_set]+1
+                row6.row1_p=gprow6
+                row6.row1_e=prow6
+                row6.row0_p=gprow5
+                row6.row0_e=prow5
+                row6.row2_p=gprow7
+                row6.row2_e=prow7
+                row7.kol=k_litery[l_set]+1
+                row7.row1_p=gprow7
+                row7.row1_e=prow7
+                row7.row0_p=gprow6
+                row7.row0_e=prow6
+                row7.row2_p=gprow8
+                row7.row2_e=prow8
+                row8.kol=k_litery[l_set]+1
+                row8.row1_p=gprow8
+                row8.row1_e=prow8
+                row8.row0_p=gprow7
+                row8.row0_e=prow7
+                row8.row2_p=gprow9
+                row8.row2_e=prow9
+                row9.kol=k_litery[l_set]+1
+                row9.row1_p=gprow9
+                row9.row1_e=prow9
+                row9.row0_p=gprow8
+                row9.row0_e=prow8
+                row9.row2_p=gsprow10
+                row9.row2_e=prow10
+                row10.kol=k_litery[l_set]+1
+                row10.row1_p=gprow10
+                row10.row1_e=prow10
+                row10.row0_p=gprow9
+                row10.row0_e=prow9
+                row10.row2_p=litery
+                row10.row2_e=litery
+                if n_set==1:
+                    row1.zrzucanie_gc()
+                    stat=stat-row1.stat_local
+                    i2=row1.stat_local
+                    row1.stat_local=0
+                elif n_set==2:
+                    row2.zrzucanie_gc()
+                    stat=stat-row2.stat_local
+                    i2=row2.stat_local
+                    row2.stat_local=0
+                elif n_set==3:
+                    row3.zrzucanie_gc()
+                    stat=stat-row3.stat_local
+                    i2=row3.stat_local
+                    row3.stat_local=0
+                elif n_set==4:
+                    row4.zrzucanie_gc()
+                    stat=stat-row4.stat_local
+                    i2=row4.stat_local
+                    row4.stat_local=0        
+                elif n_set==5:
+                    row5.zrzucanie_gc()
+                    stat=stat-row5.stat_local
+                    i2=row5.stat_local
+                    row5.stat_local=0
+                elif n_set==6:
+                    row6.zrzucanie_gc()
+                    stat=stat-row6.stat_local
+                    i2=row6.stat_local
+                    row6.stat_local=0
+                elif n_set==7:
+                    row7.zrzucanie_gc()
+                    stat=stat-row7.stat_local
+                    i2=row7.stat_local
+                    row7.stat_local=0
+                elif n_set==8:
+                    row8.zrzucanie_gc()
+                    stat=stat-row8.stat_local
+                    i2=row8.stat_local
+                    row8.stat_local=0
+                elif n_set==9:
+                    row9.zrzucanie_gc()
+                    stat=stat-row9.stat_local
+                    i2=row9.stat_local
+                    row9.stat_local=0
+                else:
+                    row10.zrzucanie_gc()
+                    stat=stat-row10.stat_local
+                    i2=row10.stat_local
+                    row10.stat_local=0
+        end=time.time()
+        czas=int(end-start)
+        minuta=0
+        while czas>=60:
+            minuta=minuta+1
+            czas=czas-60
+        if stat==0:
+            winner="komputer"
         else:
-            a=kol-2
-            for x in range (0,3):
-                a=a+1 
-                while sprow9[a]==statek or sprow10[a]==statek:
-                    print(f"{czerwony}W tym miejscu nie możesz postawić statku!{biały}")
-                    time.sleep(2)
-                    break
-                a==kol+1
-                sprow10[kol]=statek
-        spoj=spoj-1
+            winner="gracz 1"
+        wait()
+        print("======================================================")
+        print(f"|                {zielony}GRA SKOŃCZONA!{biały}                      |")
+        print(f"| Zwycięzca: {winner}                                 |")
+        if minuta>9 and czas>9:
+            print(f"| Czas gry: {minuta}min {czas}s                                |")
+        elif minuta>9 and czas<10:
+            print(f"| Czas gry: {minuta}min {czas}s                                 |")
+        else:
+            print(f"| Czas gry: {minuta}min {czas}s                                  |")
+        if winner=="gracz 2":
+            print(f"| Niezatopione statki: {stat2}                             |")
+        else:
+            print(f"| Niezatopione statki: {stat}                             |")
+        print("|                                                    |")
+        print("| Jeśli chcesz zagrać jeszcze raz, kliknij 1         |")
+        print("======================================================")
+        g=int(input())
+        while g!=1:
+            g=int(input())
+        menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m)
 
     elif w_menu==2:
         wait()
@@ -262,7 +573,7 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2):
                         
             elif ust==0:
                 wait()
-                menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
+                menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m)
             else:
                 print(f"{czerwony}Podano nieprawidłową liczbę!{biały}")
                      
@@ -493,8 +804,6 @@ def ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt):
     plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
     cnt=str(input(f"Jeśli chcesz przejść do układania statków przez 2 gracza wciśnij enter"))    
 def ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt):
-
-    
     wait()
     print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
     print("|                                       |")
@@ -640,8 +949,6 @@ def ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt):
     print(f"{zielony}Oto twoja plansza: {biały}")
     plansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10)
     cnt=str(input(f"Jeśli chcesz przejść do gry wciśnij enter"))
-def ukladaniepc():
-    print("Komputer układa swoją plansze...")
 class akcja():
                 a=1
                 kol=int
@@ -750,6 +1057,25 @@ class akcja():
                                 self.row1_e[self.kol]=t_woda
                                 wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10,gprow1,gprow2,gprow3,gprow4,gprow5,gprow6,gprow7,gprow8,gprow9,gprow10)
                                 time.sleep(2)
+                                self.a=0
+                                i2=0
+                def zrzucanie_gc(self):
+                    while self.a!=0:
+                        if self.row1_p[self.kol]==t_woda or self.row1_p[self.kol]==t_statek:
+                            self.kol=random.randrange(1,10)
+                            n_set=random.randange(1,10)
+                        else:
+                            if self.row1_e[self.kol]==statek:
+                                self.row1_p[self.kol]=t_statek
+                                if (self.row1_e[self.kol-1]==statek and self.row1_p[self.kol-1]!=t_statek) or (self.row1_e[self.kol+1]==statek and self.row1_p[self.kol+1]!=t_statek) or (self.row2_e[self.kol]==statek and self.row2_p[self.kol]!=t_statek) or (self.row0_e[self.kol]==statek and self.row0_p[self.kol]!=t_statek):
+                                    print(f"{zielony}Trafiony!{biały}")
+                                else:
+                                    self.stat_local+=1
+                                self.row1_e[self.kol]=t_statek
+                                self.a=0
+                            else:
+                                self.row1_p[self.kol]=t_woda
+                                self.row1_e[self.kol]=t_woda
                                 self.a=0
                                 i2=0
 def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
@@ -1129,7 +1455,7 @@ gprow8=[8,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','�
 gprow9=[9,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 gprow10=[10,'','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 
-sprow1=[1,' ','□ ','□ ','■ ','■ ','□ ','□ ','□ ','□ ','□ ','□ ','']
+sprow1=[1,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 sprow2=[2,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 sprow3=[3,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
 sprow4=[4,' ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','']
@@ -1158,12 +1484,14 @@ n_set = int
 kol = int
 cnt=str
 
-spoj=0
+spoj=4
 spoj2=spoj
 stat=spoj
 stat2=spoj2
+a=int
 zm=int
 ust=int
+m=0
 limit=30
 k_litery={
         "A": 1,
@@ -1177,6 +1505,7 @@ k_litery={
         "I": 9,
         "J": 10,
 } 
+loading=["Trwa układanie statków przez komputer."]
 # print(f"                 UWAGA!                ")
 # print("W programie aktualnie nie znajdują się ")
 # print(" zabezpieczenia przeciwko wprowadzeniu ")
@@ -1184,5 +1513,5 @@ k_litery={
 # print("liczbowych przez użytkownika, zachowaj ")
 # print("więc szczególną uwagę")
 
-menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
+menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m)
 
