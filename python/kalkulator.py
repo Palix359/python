@@ -57,7 +57,7 @@ if pot=='TAK':
         print("Iloczyn wynosi: ", a*b)
     elif dzialanie=='/':
         if b==0:
-            print("Dzielnikiem nie moe być liczba 0")
+            print("Dzielnikiem nie może być liczba 0")
         else:  
             print("Iloraz wynosi: ", a/b)
     elif dzialanie=='**':

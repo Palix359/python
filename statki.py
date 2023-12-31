@@ -27,8 +27,8 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m):
         spoj=spoj2
         print(f"{niebieski}Trwa ustawianie statków przez komputer...{biały}")
         while spoj2!=0:
-            n_set=random.randrange(1,10)
-            kol=random.randrange(1,10)+1
+            n_set=random.randint(1,10)
+            kol=random.randint(1,10)+1
             if n_set==1:
                 a=kol-2
                 for x in range (0,3):
@@ -292,8 +292,8 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m):
                 print(f"{niebieski} RUCH KOMPUTERA {biały}")
                 print("=================")
                 time.sleep(1)
-                kol=random.randrange(1,10)
-                n_set=random.randrange(1,10)
+                kol=random.randint(1,10)
+                n_set=random.randint(1,10)
                 kol=kol+1
                 row1.kol=k_litery[l_set]+1
                 row1.row1_p=gprow1
@@ -451,7 +451,7 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m):
         wait()
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt)
         ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt)
-        gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj)
+        gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj,limit,limit)
         # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
         # menu(w_menu)
     elif w_menu==3:
@@ -631,19 +631,20 @@ def gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsp
     print(*gsprow8)
     print(*gsprow9)
     print(*gsprow10)
-def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
-    print("               TY                                                PRZECIWNIK            ")
-    print(*litery,'                  ',*litery,sep='  ')
-    print(*prow1,'                  ',*gsprow1)
-    print(*prow2,'                  ',*gsprow2)
-    print(*prow3,'                  ',*gsprow3)
-    print(*prow4,'                  ',*gsprow4)
-    print(*prow5,'                  ',*gsprow5)
-    print(*prow6,'                  ',*gsprow6)
-    print(*prow7,'                  ',*gsprow7)
-    print(*prow8,'                  ',*gsprow8)
-    print(*prow9,'                  ',*gsprow9)
-    print(*prow10,'                  ',*gsprow10)
+def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,limit_g1,komunikat):
+    print("               TY                                           PRZECIWNIK            ")
+    print(*litery,'             ',*litery,'    | Limit ruchu: ',limit_g1,'s',sep='  ')
+    print(*prow1,'              ',*gsprow1,'    |',komunikat)
+    print(*prow2,'              ',*gsprow2,)
+    print(*prow3,'              ',*gsprow3,)
+    print(*prow4,'              ',*gsprow4,)
+    print(*prow5,'              ',*gsprow5)
+    print(*prow6,'              ',*gsprow6)
+    print(*prow7,'              ',*gsprow7)
+    print(*prow8,'              ',*gsprow8)
+    print(*prow9,'              ',*gsprow9)
+    print(*prow10,'             ',*gsprow10)
+
 def wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10,gprow1,gprow2,gprow3,gprow4,gprow5,gprow6,gprow7,gprow8,gprow9,gprow10):
     print("               TY                                                PRZECIWNIK            ")
     print(*litery,'                  ',*litery,sep='  ')
@@ -1080,7 +1081,7 @@ class akcja():
                                 i2=0
 def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
     start=time.time()
-    while stat!=0 and stat2!=0:
+    while stat!=0 and stat2!=0: #Sprawdzanie czy ktoś nie wygrał
         i1=1
         i2=1
         while i1!=0 and stat2!=0: #Powtarzanie ruchu po trafieniu nie działa gdy długość statków jest większa od 1
@@ -1097,7 +1098,7 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
                 wait()
                 print(f"{czerwony}Podałeś złą literę!{biały}")
                 time.sleep(1)
-                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat)      
                 l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
                 l_set=l_set.upper()
             n_set=int(input("Podaj numer wiersza, na który chcesz zrzucić bombę: "))
@@ -1105,7 +1106,7 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
                 wait()
                 print(f"{czerwony}Podałeś zły numer!{biały}")
                 time.sleep(1)
-                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat)
                 n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
             kol=k_litery[l_set]
             kol=kol+1 
@@ -1416,9 +1417,6 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
     while g!=1:
         g=int(input())
     menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
-
-        
-
 
 czerwony = "\033[1;31m"
 biały = "\033[0m"
