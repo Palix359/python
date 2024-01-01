@@ -451,7 +451,7 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m):
         wait()
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt)
         ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt)
-        gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj,limit,limit)
+        gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj)
         # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
         # menu(w_menu)
     elif w_menu==3:
@@ -631,10 +631,10 @@ def gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsp
     print(*gsprow8)
     print(*gsprow9)
     print(*gsprow10)
-def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,limit_g1,komunikat):
+def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat):
     print("               TY                                           PRZECIWNIK            ")
-    print(*litery,'             ',*litery,'    | Limit ruchu: ',limit_g1,'s',sep='  ')
-    print(*prow1,'              ',*gsprow1,'    |',komunikat)
+    print(*litery,'             ',*litery,'    |',komunikat,sep='  ')
+    print(*prow1,'              ',*gsprow1,'    |')
     print(*prow2,'              ',*gsprow2,)
     print(*prow3,'              ',*gsprow3,)
     print(*prow4,'              ',*gsprow4,)
@@ -1091,7 +1091,7 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
             print("=================")
             time.sleep(1)
             wait()
-            wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+            wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat)
             l_set=str(input("Podaj literę kolumny, na którą chcesz zrzucić bombę: "))
             l_set = l_set.upper()
             while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
@@ -1503,6 +1503,10 @@ k_litery={
         "I": 9,
         "J": 10,
 } 
+miejsce=str
+komunikat={
+    1: f"{niebieski}Twój przeciwnik trafił w twój statek ({miejsce}){biały}!"
+}
 loading=["Trwa układanie statków przez komputer."]
 # print(f"                 UWAGA!                ")
 # print("W programie aktualnie nie znajdują się ")
