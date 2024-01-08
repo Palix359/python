@@ -451,7 +451,7 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m):
         wait()
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt)
         ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt)
-        gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj)
+        gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj,km1,km2)
         # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
         # menu(w_menu)
     elif w_menu==3:
@@ -631,10 +631,10 @@ def gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsp
     print(*gsprow8)
     print(*gsprow9)
     print(*gsprow10)
-def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat):
+def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set):
     print("               TY                                           PRZECIWNIK            ")
-    print(*litery,'             ',*litery,'    |',komunikat,sep='  ')
-    print(*prow1,'              ',*gsprow1,'    |')
+    print(*litery,'             ',*litery,'    |',komunikatg1[km1],l_set,n_set,sep='  ')
+    print(*prow1,'              ',*gsprow1,'  |')
     print(*prow2,'              ',*gsprow2,)
     print(*prow3,'              ',*gsprow3,)
     print(*prow4,'              ',*gsprow4,)
@@ -967,14 +967,14 @@ class akcja():
                             print(f"{czerwony}W tym miejscu nie możesz zrzucić bomby!{biały}")
                             time.sleep(2)
                             wait()
-                            wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                            wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
                             l_set=str(input("Podaj jeszcze raz literę kolumny, na którą chcesz zrzucić bombę: "))
                             l_set = l_set.upper()
                             while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
                                 wait()
                                 print(f"{czerwony}Podałeś złą literę!{biały}")
                                 time.sleep(1)
-                                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
                                 l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
                                 l_set=l_set.upper()
                             n_set=int(input("Podaj jeszcze raz numer wiersza, na który chcesz zrzucić bombę: "))
@@ -982,7 +982,7 @@ class akcja():
                                 wait()
                                 print(f"{czerwony}Podałeś zły numer!{biały}")
                                 time.sleep(1)
-                                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
                                 n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
                             self.kol=k_litery[l_set]
                             self.kol=self.kol+1
@@ -992,21 +992,24 @@ class akcja():
                                 wait()
                                 if (self.row1_e[self.kol-1]==statek and self.row1_p[self.kol-1]!=t_statek) or (self.row1_e[self.kol+1]==statek and self.row1_p[self.kol+1]!=t_statek) or (self.row2_e[self.kol]==statek and self.row2_p[self.kol]!=t_statek) or (self.row0_e[self.kol]==statek and self.row0_p[self.kol]!=t_statek):
                                     print(f"{zielony}Trafiony!{biały}")
+                                    self.kom=1
                                 else:
                                     print(f"{zielony}{pogrubienie}Trafiony zatopiony!{biały}")
                                     self.stat_local+=1
+                                    self.kom=2
                                 self.row1_e[self.kol]=t_statek
                                 time.sleep(2)
-                                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
                                 time.sleep(2)
                                 self.a=0
                             else:
                                 self.row1_p[self.kol]=t_woda
                                 wait()
                                 print(f"{niebieski}Pudło!{biały}")
+                                self.kom=3
                                 time.sleep(2)
                                 self.row1_e[self.kol]=t_woda
-                                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
                                 time.sleep(2)
                                 self.a=0
 
@@ -1079,7 +1082,7 @@ class akcja():
                                 self.row1_e[self.kol]=t_woda
                                 self.a=0
                                 i2=0
-def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
+def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj,km1,km2):
     start=time.time()
     while stat!=0 and stat2!=0: #Sprawdzanie czy ktoś nie wygrał
         i1=1
@@ -1091,14 +1094,14 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
             print("=================")
             time.sleep(1)
             wait()
-            wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat)
+            wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
             l_set=str(input("Podaj literę kolumny, na którą chcesz zrzucić bombę: "))
             l_set = l_set.upper()
             while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
                 wait()
                 print(f"{czerwony}Podałeś złą literę!{biały}")
                 time.sleep(1)
-                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat)      
+                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)      
                 l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
                 l_set=l_set.upper()
             n_set=int(input("Podaj numer wiersza, na który chcesz zrzucić bombę: "))
@@ -1106,7 +1109,7 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
                 wait()
                 print(f"{czerwony}Podałeś zły numer!{biały}")
                 time.sleep(1)
-                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat)
+                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
                 n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
             kol=k_litery[l_set]
             kol=kol+1 
@@ -1195,51 +1198,61 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
                 stat2=stat2-row1.stat_local
                 i1=row1.stat_local
                 row1.stat_local=0
+                km2=row1.kom
             elif n_set==2:
                 row2.zrzucanie_g1()
                 stat2=stat2-row2.stat_local
                 i1=row2.stat_local
                 row2.stat_local=0
+                km2=row2.kom
             elif n_set==3:
                 row3.zrzucanie_g1()
                 stat2=stat2-row3.stat_local
                 i1=row3.stat_local
                 row3.stat_local=0
+                km2=row3.kom
             elif n_set==4:
                 row4.zrzucanie_g1()
                 stat2=stat2-row4.stat_local
                 i1=row4.stat_local
-                row4.stat_local=0        
+                row4.stat_local=0
+                km2=row4.kom        
             elif n_set==5:
                 row5.zrzucanie_g1()
                 stat2=stat2-row5.stat_local
                 i1=row5.stat_local
                 row5.stat_local=0
+                km2=row5.kom
             elif n_set==6:
                 row6.zrzucanie_g1()
                 stat2=stat2-row6.stat_local
                 i1=row6.stat_local
                 row6.stat_local=0
+                km2=row6.kom
             elif n_set==7:
                 row7.zrzucanie_g1()
                 stat2=stat2-row7.stat_local
                 i1=row7.stat_local
                 row7.stat_local=0
+                km2=row7.kom
             elif n_set==8:
                 row8.zrzucanie_g1()
                 stat2=stat2-row8.stat_local
                 i1=row8.stat_local
                 row8.stat_local=0
+                km2=row8.kom
             elif n_set==9:
                 row9.zrzucanie_g1()
                 stat2=stat2-row9.stat_local
                 i1=row9.stat_local
                 row9.stat_local=0
+                km2=row9.kom
             else:
                 row10.zrzucanie_g1()
                 stat2=stat2-row10.stat_local
                 i1=row10.stat_local
                 row10.stat_local=0
+                km2=row10.kom
         while i2!=0 and stat!=0:
             wait()
             print("=================")
@@ -1341,51 +1354,61 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj):
                 stat=stat-row1.stat_local
                 i2=row1.stat_local
                 row1.stat_local=0
+                km=row1.kom
             elif n_set==2:
                 row2.zrzucanie_g2()
                 stat=stat-row2.stat_local
                 i2=row2.stat_local
                 row2.stat_local=0
+                km=row2.kom
             elif n_set==3:
                 row3.zrzucanie_g2()
                 stat=stat-row3.stat_local
                 i2=row3.stat_local
                 row3.stat_local=0
+                km=row3.kom
             elif n_set==4:
                 row4.zrzucanie_g2()
                 stat=stat-row4.stat_local
                 i2=row4.stat_local
-                row4.stat_local=0        
+                row4.stat_local=0
+                km=row4.kom        
             elif n_set==5:
                 row5.zrzucanie_g2()
                 stat=stat-row5.stat_local
                 i2=row5.stat_local
                 row5.stat_local=0
+                km=row5.kom
             elif n_set==6:
                 row6.zrzucanie_g2()
                 stat=stat-row6.stat_local
                 i2=row6.stat_local
                 row6.stat_local=0
+                km=row6.kom
             elif n_set==7:
                 row7.zrzucanie_g2()
                 stat=stat-row7.stat_local
                 i2=row7.stat_local
                 row7.stat_local=0
+                km=row7.kom
             elif n_set==8:
                 row8.zrzucanie_g2()
                 stat=stat-row8.stat_local
                 i2=row8.stat_local
                 row8.stat_local=0
+                km=row8.kom
             elif n_set==9:
                 row9.zrzucanie_g2()
                 stat=stat-row9.stat_local
                 i2=row9.stat_local
                 row9.stat_local=0
+                km=row9.kom
             else:
                 row10.zrzucanie_g2()
                 stat=stat-row10.stat_local
                 i2=row10.stat_local
                 row10.stat_local=0
+                km=row10.kom
     end=time.time()
     czas=int(end-start)
     minuta=0
@@ -1477,8 +1500,6 @@ gsprow10=[10,'','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','□ ','
 
 
 w_menu = int
-l_set = str
-n_set = int
 kol = int
 cnt=str
 
@@ -1491,6 +1512,8 @@ zm=int
 ust=int
 m=0
 limit=30
+n_set=0
+l_set="O"
 k_litery={
         "A": 1,
         "B": 2,
@@ -1502,10 +1525,20 @@ k_litery={
         "H": 8,
         "I": 9,
         "J": 10,
-} 
-miejsce=str
-komunikat={
-    1: f"{niebieski}Twój przeciwnik trafił w twój statek ({miejsce}){biały}!"
+}
+km1=4
+km2=4
+komunikatg1={
+    1: f"{niebieski}Przeciwnik trafił w twój statek {biały}",
+    2: f"{niebieski}Przeciwnik zatopił twój statek {biały}",
+    3: f"{niebieski}Twój przeciwnik spudłował, trafiając w pole {biały}",
+    4: "",
+}
+komunikatg2={
+    1: f"{niebieski}Przeciwnik trafił w twój statek {biały}",
+    2: f"{niebieski}Przeciwnik zatopił twój statek {biały}",
+    3: f"{niebieski}Twój przeciwnik spudłował, trafiając w pole {biały}",
+    4: "",
 }
 loading=["Trwa układanie statków przez komputer."]
 # print(f"                 UWAGA!                ")
