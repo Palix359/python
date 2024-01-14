@@ -451,9 +451,365 @@ def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m):
         wait()
         ukladanie1(statek,spoj,k_litery,l_set,n_set,kol,cnt)
         ukladanie2(statek,spoj2,k_litery,l_set,n_set,kol,cnt)
-        gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj,km1,km2)
-        # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
-        # menu(w_menu)
+        start=time.time()
+        while stat!=0 and stat2!=0: #Sprawdzanie czy ktoś nie wygrał
+            i1=1
+            i2=1
+            while i1!=0 and stat2!=0: #Powtarzanie ruchu po trafieniu nie działa gdy długość statków jest większa od 1
+                wait()
+                print("=================")
+                print(f"  {niebieski}RUCH GRACZA 1{biały}  ")
+                print("=================")
+                time.sleep(1)
+                wait()
+                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
+                l_set=str(input("Podaj literę kolumny, na którą chcesz zrzucić bombę: "))
+                l_set = l_set.upper()
+                while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
+                    wait()
+                    print(f"{czerwony}Podałeś złą literę!{biały}")
+                    time.sleep(1)
+                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)      
+                    l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
+                    l_set=l_set.upper()
+                n_set=int(input("Podaj numer wiersza, na który chcesz zrzucić bombę: "))
+                while n_set<0 or n_set>10:
+                    wait()
+                    print(f"{czerwony}Podałeś zły numer!{biały}")
+                    time.sleep(1)
+                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
+                    n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
+                kol=k_litery[l_set]
+                kol=kol+1 
+                row1=akcja()
+                row1.kol=k_litery[l_set]+1
+                row1.row1_p=gsprow1
+                row1.row1_e=sprow1
+                row1.row0_p=litery
+                row1.row0_e=litery
+                row1.row2_p=gsprow2
+                row1.row2_e=sprow2
+                row2=akcja()
+                row2.kol=k_litery[l_set]+1
+                row2.row1_p=gsprow2
+                row2.row1_e=sprow2
+                row2.row0_p=gsprow1
+                row2.row0_e=sprow1
+                row2.row2_p=gsprow3
+                row2.row2_e=sprow3
+                row3=akcja()
+                row3.kol=k_litery[l_set]+1
+                row3.row1_p=gsprow3
+                row3.row1_e=sprow3
+                row3.row0_p=gsprow2
+                row3.row0_e=sprow2
+                row3.row2_p=gsprow4
+                row3.row2_e=sprow4
+                row4=akcja()
+                row4.kol=k_litery[l_set]+1
+                row4.row1_p=gsprow4
+                row4.row1_e=sprow4
+                row4.row0_p=gsprow3
+                row4.row0_e=sprow3
+                row4.row2_p=gsprow5
+                row4.row2_e=sprow5
+                row5=akcja()
+                row5.kol=k_litery[l_set]+1
+                row5.row1_p=gsprow5
+                row5.row1_e=sprow5
+                row5.row0_p=gsprow4
+                row5.row0_e=sprow4
+                row5.row2_p=gsprow6
+                row5.row2_e=sprow6
+                row6=akcja()
+                row6.kol=k_litery[l_set]+1
+                row6.row1_p=gsprow6
+                row6.row1_e=sprow6
+                row6.row0_p=gsprow5
+                row6.row0_e=sprow5
+                row6.row2_p=gsprow7
+                row6.row2_e=sprow7
+                row7=akcja()
+                row7.kol=k_litery[l_set]+1
+                row7.row1_p=gsprow7
+                row7.row1_e=sprow7
+                row7.row0_p=gsprow6
+                row7.row0_e=sprow6
+                row7.row2_p=gsprow8
+                row7.row2_e=sprow8
+                row8=akcja()
+                row8.kol=k_litery[l_set]+1
+                row8.row1_p=gsprow8
+                row8.row1_e=sprow8
+                row8.row0_p=gsprow7
+                row8.row0_e=sprow7
+                row8.row2_p=gsprow9
+                row8.row2_e=sprow9
+                row9=akcja()
+                row9.kol=k_litery[l_set]+1
+                row9.row1_p=gsprow9
+                row9.row1_e=sprow9
+                row9.row0_p=gsprow8
+                row9.row0_e=sprow8
+                row9.row2_p=gsprow10
+                row9.row2_e=sprow10
+                row10=akcja()
+                row10.kol=k_litery[l_set]+1
+                row10.row1_p=gsprow10
+                row10.row1_e=sprow10
+                row10.row0_p=gsprow9
+                row10.row0_e=sprow9
+                row10.row2_p=litery
+                row10.row2_e=litery
+                if n_set==1:
+                    row1.zrzucanie_g1()
+                    stat2=stat2-row1.stat_local
+                    i1=row1.stat_local
+                    row1.stat_local=0
+                    km2=row1.kom
+                elif n_set==2:
+                    row2.zrzucanie_g1()
+                    stat2=stat2-row2.stat_local
+                    i1=row2.stat_local
+                    row2.stat_local=0
+                    km2=row2.kom
+                elif n_set==3:
+                    row3.zrzucanie_g1()
+                    stat2=stat2-row3.stat_local
+                    i1=row3.stat_local
+                    row3.stat_local=0
+                    km2=row3.kom
+                elif n_set==4:
+                    row4.zrzucanie_g1()
+                    stat2=stat2-row4.stat_local
+                    i1=row4.stat_local
+                    row4.stat_local=0
+                    km2=row4.kom        
+                elif n_set==5:
+                    row5.zrzucanie_g1()
+                    stat2=stat2-row5.stat_local
+                    i1=row5.stat_local
+                    row5.stat_local=0
+                    km2=row5.kom
+                elif n_set==6:
+                    row6.zrzucanie_g1()
+                    stat2=stat2-row6.stat_local
+                    i1=row6.stat_local
+                    row6.stat_local=0
+                    km2=row6.kom
+                elif n_set==7:
+                    row7.zrzucanie_g1()
+                    stat2=stat2-row7.stat_local
+                    i1=row7.stat_local
+                    row7.stat_local=0
+                    km2=row7.kom
+                elif n_set==8:
+                    row8.zrzucanie_g1()
+                    stat2=stat2-row8.stat_local
+                    i1=row8.stat_local
+                    row8.stat_local=0
+                    km2=row8.kom
+                elif n_set==9:
+                    row9.zrzucanie_g1()
+                    stat2=stat2-row9.stat_local
+                    i1=row9.stat_local
+                    row9.stat_local=0
+                    km2=row9.kom
+                else:
+                    row10.zrzucanie_g1()
+                    stat2=stat2-row10.stat_local
+                    i1=row10.stat_local
+                    row10.stat_local=0
+                    km2=row10.kom
+            while i2!=0 and stat!=0:
+                wait()
+                print("=================")
+                print(f"{niebieski}  RUCH GRACZA 2  {biały}")
+                print("=================")
+                time.sleep(1)
+                wait()
+                wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10,gprow1,gprow2,gprow3,gprow4,gprow5,gprow6,gprow7,gprow8,gprow9,gprow10)
+                l_set=str(input("Podaj literę kolumny, na którą chcesz zrzucić bombę: "))
+                l_set = l_set.upper()
+                while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
+                    wait()
+                    print(f"{czerwony}Podałeś złą literę!{biały}")
+                    time.sleep(1)
+                    wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10,gprow1,gprow2,gprow3,gprow4,gprow5,gprow6,gprow7,gprow8,gprow9,gprow10)
+                    l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
+                    l_set=l_set.upper()
+                n_set=int(input("Podaj numer wiersza, na który chcesz zrzucić bombę: "))
+                while n_set<0 or n_set>10:
+                    wait()
+                    print(f"{czerwony}Podałeś zły numer!{biały}")
+                    time.sleep(1)
+                    wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10,gprow1,gprow2,gprow3,gprow4,gprow5,gprow6,gprow7,gprow8,gprow9,gprow10)
+                    n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
+                kol=k_litery[l_set]
+                kol=kol+1
+                row1.kol=k_litery[l_set]+1
+                row1.row1_p=gprow1
+                row1.row1_e=prow1
+                row1.row0_p=litery
+                row1.row0_e=litery
+                row1.row2_p=gprow2
+                row1.row2_e=prow2
+                row2.kol=k_litery[l_set]+1
+                row2.row1_p=gprow2
+                row2.row1_e=prow2
+                row2.row0_p=gprow1
+                row2.row0_e=prow1
+                row2.row2_p=gprow3
+                row2.row2_e=prow3
+                row3.kol=k_litery[l_set]+1
+                row3.row1_p=gprow3
+                row3.row1_e=prow3
+                row3.row0_p=gprow2
+                row3.row0_e=prow2
+                row3.row2_p=gprow4
+                row3.row2_e=prow4
+                row4.kol=k_litery[l_set]+1
+                row4.row1_p=gprow4
+                row4.row1_e=prow4
+                row4.row0_p=gprow3
+                row4.row0_e=prow3
+                row4.row2_p=gprow5
+                row4.row2_e=prow5
+                row5.kol=k_litery[l_set]+1
+                row5.row1_p=gprow5
+                row5.row1_e=prow5
+                row5.row0_p=gprow4
+                row5.row0_e=prow4
+                row5.row2_p=gprow6
+                row5.row2_e=prow6
+                row6.kol=k_litery[l_set]+1
+                row6.row1_p=gprow6
+                row6.row1_e=prow6
+                row6.row0_p=gprow5
+                row6.row0_e=prow5
+                row6.row2_p=gprow7
+                row6.row2_e=prow7
+                row7.kol=k_litery[l_set]+1
+                row7.row1_p=gprow7
+                row7.row1_e=prow7
+                row7.row0_p=gprow6
+                row7.row0_e=prow6
+                row7.row2_p=gprow8
+                row7.row2_e=prow8
+                row8.kol=k_litery[l_set]+1
+                row8.row1_p=gprow8
+                row8.row1_e=prow8
+                row8.row0_p=gprow7
+                row8.row0_e=prow7
+                row8.row2_p=gprow9
+                row8.row2_e=prow9
+                row9.kol=k_litery[l_set]+1
+                row9.row1_p=gprow9
+                row9.row1_e=prow9
+                row9.row0_p=gprow8
+                row9.row0_e=prow8
+                row9.row2_p=gsprow10
+                row9.row2_e=prow10
+                row10.kol=k_litery[l_set]+1
+                row10.row1_p=gprow10
+                row10.row1_e=prow10
+                row10.row0_p=gprow9
+                row10.row0_e=prow9
+                row10.row2_p=litery
+                row10.row2_e=litery
+                if n_set==1:
+                    row1.zrzucanie_g2()
+                    stat=stat-row1.stat_local
+                    i2=row1.stat_local
+                    row1.stat_local=0
+                    km=row1.kom
+                elif n_set==2:
+                    row2.zrzucanie_g2()
+                    stat=stat-row2.stat_local
+                    i2=row2.stat_local
+                    row2.stat_local=0
+                    km=row2.kom
+                elif n_set==3:
+                    row3.zrzucanie_g2()
+                    stat=stat-row3.stat_local
+                    i2=row3.stat_local
+                    row3.stat_local=0
+                    km=row3.kom
+                elif n_set==4:
+                    row4.zrzucanie_g2()
+                    stat=stat-row4.stat_local
+                    i2=row4.stat_local
+                    row4.stat_local=0
+                    km=row4.kom        
+                elif n_set==5:
+                    row5.zrzucanie_g2()
+                    stat=stat-row5.stat_local
+                    i2=row5.stat_local
+                    row5.stat_local=0
+                    km=row5.kom
+                elif n_set==6:
+                    row6.zrzucanie_g2()
+                    stat=stat-row6.stat_local
+                    i2=row6.stat_local
+                    row6.stat_local=0
+                    km=row6.kom
+                elif n_set==7:
+                    row7.zrzucanie_g2()
+                    stat=stat-row7.stat_local
+                    i2=row7.stat_local
+                    row7.stat_local=0
+                    km=row7.kom
+                elif n_set==8:
+                    row8.zrzucanie_g2()
+                    stat=stat-row8.stat_local
+                    i2=row8.stat_local
+                    row8.stat_local=0
+                    km=row8.kom
+                elif n_set==9:
+                    row9.zrzucanie_g2()
+                    stat=stat-row9.stat_local
+                    i2=row9.stat_local
+                    row9.stat_local=0
+                    km=row9.kom
+                else:
+                    row10.zrzucanie_g2()
+                    stat=stat-row10.stat_local
+                    i2=row10.stat_local
+                    row10.stat_local=0
+                    km=row10.kom
+        end=time.time()
+        czas=int(end-start)
+        minuta=0
+        while czas>=60:
+            minuta=minuta+1
+            czas=czas-60
+        if stat==0:
+            winner="gracz 2"
+        else:
+            winner="gracz 1"
+        wait()
+        print("======================================================")
+        print(f"|                {zielony}GRA SKOŃCZONA!{biały}                      |")
+        print(f"| Zwycięzca: {winner}                                 |")
+        if minuta>9 and czas>9:
+            print(f"| Czas gry: {minuta}min {czas}s                                |")
+        elif minuta>9 and czas<10:
+            print(f"| Czas gry: {minuta}min {czas}s                                 |")
+        else:
+            print(f"| Czas gry: {minuta}min {czas}s                                  |")
+        if winner=="gracz 2":
+            print(f"| Niezatopione statki: {stat2}                             |")
+        else:
+            print(f"| Niezatopione statki: {stat}                             |")
+        print("|                                                    |")
+        print("| Jeśli chcesz zagrać jeszcze raz, kliknij 1         |")
+        print("======================================================")
+        g=int(input())
+        while g!=1:
+            g=int(input())
+        menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2)
+            # print(f"{niebieski}Gra dwuosobowa jest obecnie niedostępna{biały}")
+            # menu(w_menu)
     elif w_menu==3:
         ust=100
         while ust!=0:    
