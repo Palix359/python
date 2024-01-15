@@ -3,7 +3,7 @@ import time
 import random
 def wait():
     time.sleep(0.5)
-    os.system('cls')
+    os.system('clear')
 def menu(w_menu,spoj,spoj2,zm,ust,limit,stat,stat2,n_set,l_set,kol,a,m,t):
     wait()
     print(f"{biały}===============================================================")

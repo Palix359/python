@@ -1,6 +1,6 @@
 import random
 import os
-os.system('cls')
+os.system('clear')
 print('Witaj w grze pt. "Kamień, papier, nożyce"!')
 gracz=input("Podaj nazwę gracza: ")
 print("Witaj,",gracz)
