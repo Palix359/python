@@ -1372,8 +1372,6 @@ class akcja():
                     self.kom=3
                     time.sleep(2)
                     self.row1_e[self.kol]=t_woda
-                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
-                    time.sleep(2)
                     self.a=0
 
     def zrzucanie_g2(self):
@@ -1422,8 +1420,6 @@ class akcja():
                     print(f"{niebieski}Pudło!{biały}")
                     time.sleep(2)
                     self.row1_e[self.kol]=t_woda
-                    wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10,gprow1,gprow2,gprow3,gprow4,gprow5,gprow6,gprow7,gprow8,gprow9,gprow10)
-                    time.sleep(2)
                     self.a=0
                     i2=0
     def zrzucanie_gc(self):
@@ -1558,6 +1554,8 @@ def gra2(stat,stat2,n_set,l_set,k_litery,kol,statek,t_woda,spoj,km1,km2):
             row10.row2_e=litery
             if n_set==1:
                 row1.zrzucanie_g1()
+                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikatg1,km1,l_set,n_set)
+                time.sleep(2)
                 stat2=stat2-row1.stat_local
                 i1=row1.stat_local
                 row1.stat_local=0
