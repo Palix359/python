@@ -1,3 +1,5 @@
+#Program: Weryfikacja numeru pesel
+#Numer pesel sprawdzany jest na podstawie danych z: gov.pl/web/gov/czym-jest-numer-pesel
 lista=[]
 m={
     1:"Stycznia",
