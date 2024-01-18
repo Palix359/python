@@ -5,12 +5,12 @@ print('Witaj w grze pt. "Kamień, papier, nożyce"!')
 gracz=input("Podaj nazwę gracza: ")
 print("Witaj,",gracz)
 l=['kamień','papier','nożyce']
-i=1
+i="1"
 n=0
 g1=0
 gc=0
 f=open("historia.txt","w",encoding="utf-8")
-while i==1:
+while i=="1":
     n=n+1
     x=input("Wybierz swój ruch (kamień-1, papier-2, nożyce-3): ")
     while x!='1' and x!='2' and x!='3':
@@ -60,7 +60,7 @@ while i==1:
     else:
         f.write(f"| {n}. {gracz} 0:1 Komputer\n")
         gc=gc+1
-    i=int(input("Jeżeli chcesz zagrać jeszcze raz, wpisz 1, jeżeli nie, wpisz dowolną liczbę: "))
+    i=input("Jeżeli chcesz zagrać jeszcze raz, wpisz 1, jeżeli nie, wpisz dowolną liczbę: ")
 f.close()
 f=open("historia.txt","r",encoding="utf-8")
 os.system('cls')
