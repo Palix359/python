@@ -30,7 +30,7 @@ if wybor==1:
     x=input("Podaj proszę wartość o jaką mają być przesunięte litery w szyfrze: ")
     i = x.isnumeric()
     while i==False:
-        x=input("Podana liczba nie składa się tylko z cyrf, proszę podaj tą liczbę jeszcze raz: ")
+        x=input("Podana wartość nie składa się tylko z cyrf, proszę podaj tę wartość jeszcze raz: ")
         i=x.isnumeric()
     x=int(x)
     wiadomosc=input("Podaj wiadomość do zaszyfrowania: ")
@@ -53,7 +53,7 @@ elif wybor==2:
     x=input("Jeżeli wiesz o ile zostały przesunięte litery w szyfrze, wprowadź tą wartość, jeżeli nie - wpisz 0: ")
     i=x.isnumeric()
     if i==False:
-        x=input("Nie wprowadzono liczby, proszę wpisz tą liczbę jeszcze raz: ")
+        x=input("Nie wprowadzono wartości zawieracjącej same cyfry, proszę wpisz tę wartość jeszcze raz: ")
         i=x.isnumeric()
     x=int(x)
     if x==0:

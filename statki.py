@@ -1,3 +1,4 @@
+#Niedokończony projekt, niektóre funkcje nie działają tak jak powinny
 import os
 import time
 import random
@@ -53,11 +54,11 @@ def gplansza2(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsp
     print(*gsprow9)
     print(*gsprow10)
 def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat,km1,m,stat2,ms):
-    ms.pop(0)
+    # ms.pop(0)
     print("               TY                                           PRZECIWNIK            ")
     print(*litery,'             ',*litery,'    |','Ostatni ruch przeciwnika:',sep='  ')
     print(*prow1,'             ',*gsprow1,'   |',komunikat[km1],m)
-    print(*prow2,'             ',*gsprow2,'   |',' Wcześniej, w tej samej kolejce:',*ms)
+    print(*prow2,'             ',*gsprow2,'   |',' W tej kolejce:',*ms)
     print(*prow3,'             ',*gsprow3,'   |',' Ilość niezatopionych statków:',stat2)
     print(*prow4,'             ',*gsprow4,)
     print(*prow5,'             ',*gsprow5)
@@ -67,12 +68,12 @@ def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsp
     print(*prow9,'             ',*gsprow9)
     print(*prow10,'            ',*gsprow10)
 def wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,sprow9,sprow10,gprow1,gprow2,gprow3,gprow4,gprow5,gprow6,gprow7,gprow8,gprow9,gprow10,komunikat,km2,m2,stat,ms2):
-    ms2.pop(0)
+    # ms2.pop(0)
     print("               TY                                                PRZECIWNIK            ")
     print(*litery,'                  ',*litery,'    |','Ostatni ruch przeciwnika:',sep='  ')
-    print(*sprow1,'                  ',*gprow1,'   |',komunikat[km2],m2,)
-    print(*sprow2,'                  ',*gprow2,'   |',"Wcześniej, w tej samej kolejce:",*ms2)
-    print(*sprow3,'                  ',*gprow3,'   |','Ilość niezatopionych statków:',stat)
+    print(*sprow1,'                  ',*gprow1,'   | ',komunikat[km2],m2,)
+    print(*sprow2,'                  ',*gprow2,'   |',"  W tej kolejce:",*ms2)
+    print(*sprow3,'                  ',*gprow3,'   |','  Ilość niezatopionych statków:',stat)
     print(*sprow4,'                  ',*gprow4)
     print(*sprow5,'                  ',*gprow5)
     print(*sprow6,'                  ',*gprow6)
@@ -741,14 +742,14 @@ while w_menu==0:
                 print("=================")
                 time.sleep(1)
                 wait()
-                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat,km1,m,stat2,ms)
                 l_set=str(input("Podaj literę kolumny, na którą chcesz zrzucić bombę: "))
                 l_set = l_set.upper()
                 while l_set!="A"and l_set!="B"and l_set!="C"and l_set!="D"and l_set!="E"and l_set!="F"and l_set!="G"and l_set!="H"and l_set!="I"and l_set!="J":
                     wait()
                     print(f"{czerwony}Podałeś złą literę!{biały}")
                     time.sleep(1)
-                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat,km1,m,stat2,ms)
                     l_set=str(input("Podaj nową literę kolumny, na którą chcesz zrzucić bombę: "))
                     l_set=l_set.upper()
                 n_set=int(input("Podaj numer wiersza, na który chcesz zrzucić bombę: "))
@@ -756,7 +757,7 @@ while w_menu==0:
                     wait()
                     print(f"{czerwony}Podałeś zły numer!{biały}")
                     time.sleep(1)
-                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10)
+                    wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat,km1,m,stat2,ms)
                     n_set=int(input("Podaj nowy numer wiersza, na który chesz zrzucić bombę: "))
                 kol=k_litery[l_set]
                 kol=kol+1 
@@ -1019,6 +1020,11 @@ while w_menu==0:
                     stat=stat-row10.stat_local
                     i2=row10.stat_local
                     row10.stat_local=0
+                nr=n_set
+                nr=str(nr)
+                m2=l_set+nr
+                ms2.append(m2)
+                ms=[]
         end=time.time()
         czas=int(end-start)
         minuta=0
@@ -1065,7 +1071,6 @@ while w_menu==0:
                 print("=================")
                 time.sleep(1)
                 wait()
-                print(ms)
                 wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsprow8,gsprow9,gsprow10,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10,komunikat,km1,m,stat2,ms)
                 l_set=str(input("Podaj literę kolumny, na którą chcesz zrzucić bombę: "))
                 l_set = l_set.upper()
@@ -1229,7 +1234,7 @@ while w_menu==0:
                 nr=str(nr)
                 m2=l_set+nr
                 ms2.append(m2)
-                ms=[]
+                ms=ms.clear()
             while i2!=0 and stat!=0:
                 wait()
                 print("=================")
@@ -1390,7 +1395,7 @@ while w_menu==0:
                 nr=str(nr)
                 m=l_set+nr
                 ms.append(m)
-                ms2=[]
+                ms2=ms2.clear()
         end=time.time()
         czas=int(end-start)
         minuta=0
@@ -1496,7 +1501,7 @@ while w_menu==0:
                 while zm!=0:
                     wait()
                     print(f"{biały}===============================================================")
-                    print("|                    LIMIT TRWANIA RUCHU                      |")
+                    print("|                    LIMIT TRWANIA RUCHU (nie działa)                      |")
                     print("|                                                /|           |")
                     if limit==f"{czerwony}wył.{biały}":
                         print(f"|  {pogrubienie}Aktualny limit trwania ruchu:{biały} {limit}           / |           |")
