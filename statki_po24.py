@@ -621,7 +621,7 @@ while w_menu==0:
     print("|    - Gra dwuosobowa   (wciśnij 2)           /_ _|           |")
     print("|    - Ustawienia       (wciśnij 3)        _ _ _ _|_ _ _      |")
     print("|                                          \ _ _ _ _ _ /      |")
-    print("| v.0.2.3                                                     |")
+    print("| v.0.3.0                                                     |")
     print("===============================================================")
 
     w_menu=int(input("Tutaj wpisz liczbę: "))
