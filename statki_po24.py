@@ -3,7 +3,7 @@ import time
 import random
 def wait():
     time.sleep(0.5)
-    os.system('cls')
+    os.system('clear')
 def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
     print(*litery, sep='  ')
     print(*prow1)
@@ -609,7 +609,7 @@ print("   w miejsce zm. liczbowej danej tekstowej   ")
 print(f"{czerwony}Użytkowniku, uważaj przy wprowadzaniu danych!{biały}")
 print(" Program może się nieodwracalnie zatrzymać! ")
 print("--")
-r=input("Naciśnij dowolny klawisz aby kontynuować ")
+r=input("Wciśnij enter aby kontynuować ")
 w_menu=0
 while w_menu==0:
     wait()
@@ -621,7 +621,7 @@ while w_menu==0:
     print("|    - Gra dwuosobowa   (wciśnij 2)           /_ _|           |")
     print("|    - Ustawienia       (wciśnij 3)        _ _ _ _|_ _ _      |")
     print("|                                          \ _ _ _ _ _ /      |")
-    print("| v.0.3.0                                                     |")
+    print("| v.0.3.1                                                     |")
     print("===============================================================")
 
     w_menu=int(input("Tutaj wpisz liczbę: "))
@@ -1407,7 +1407,7 @@ while w_menu==0:
                     stat=stat-row10.stat_local
                     i2=row10.stat_local
                     row10.stat_local=0
-                    km=row10.kom
+                    km1=row10.kom
                 nr=n_set
                 nr=str(nr)
                 m=l_set+nr
