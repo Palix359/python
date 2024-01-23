@@ -10,6 +10,10 @@ while liczba_d>3999:
         setki=setki+1
     else:
         print("Liczby nie da się zapisać w systemie rzymskim, zachowując zasady pisowni liczb w tym systemie")
-m=round(liczba_d/1000)
-print(m)
+m=int(liczba_d/1000)
+c=int(liczba_d/100)-m*10
+x=int(liczba_d/10)-m*100-c*10
+if liczba_d-m*1000>900:
     
+
+
