@@ -1,3 +1,0 @@
-| 1. Paweł 1:1 Komputer
-| 2. Paweł 0:1 Komputer
-| 3. Paweł 1:0 Komputer

@@ -3,7 +3,7 @@ import time
 import random
 def wait():
     time.sleep(0.5)
-    os.system('clear')
+    os.system('cls')
 def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
     print(*litery, sep='  ')
     print(*prow1)
