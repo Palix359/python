@@ -1,10 +1,9 @@
-#Niedokończony projekt, niektóre funkcje nie działają tak jak powinny
 import os
 import time
 import random
 def wait():
     time.sleep(0.5)
-    os.system('cls')
+    os.system('clear')
 def plansza1(litery,prow1,prow2,prow3,prow4,prow5,prow6,prow7,prow8,prow9,prow10):
     print(*litery, sep='  ')
     print(*prow1)
@@ -58,7 +57,7 @@ def wplansza1(litery,gsprow1,gsprow2,gsprow3,gsprow4,gsprow5,gsprow6,gsprow7,gsp
     print("               TY                                           PRZECIWNIK            ")
     print(*litery,'             ',*litery,'    |','Ostatni ruch przeciwnika:',sep='  ')
     print(*prow1,'             ',*gsprow1,'   | ',komunikat[km1],m)
-    print(*prow2,'             ',*gsprow2,'   |',' W tej kolejce:',*ms)
+    print(*prow2,'             ',*gsprow2,'   |',' Przeciwnik - w tej kolejce:',*ms)
     print(*prow3,'             ',*gsprow3,'   |',' Ilość niezatopionych statków:',stat2)
     print(*prow4,'             ',*gsprow4,)
     print(*prow5,'             ',*gsprow5)
@@ -72,7 +71,7 @@ def wplansza2(litery,sprow1,sprow2,sprow3,sprow4,sprow5,sprow6,sprow7,sprow8,spr
     print("               TY                                                PRZECIWNIK            ")
     print(*litery,'                  ',*litery,'    |','Ostatni ruch przeciwnika:',sep='  ')
     print(*sprow1,'                  ',*gprow1,'   | ',komunikat[km2],m2,)
-    print(*sprow2,'                  ',*gprow2,'   |'," W tej kolejce:",*ms2)
+    print(*sprow2,'                  ',*gprow2,'   |'," Przeciwnik - w tej kolejce:",*ms2)
     print(*sprow3,'                  ',*gprow3,'   |',' Ilość niezatopionych statków:',stat)
     print(*sprow4,'                  ',*gprow4)
     print(*sprow5,'                  ',*gprow5)
@@ -588,6 +587,7 @@ k_litery={
         "I": 9,
         "J": 10,
 }
+
 km1=4
 km2=4
 n_set=int 
@@ -601,15 +601,15 @@ komunikat={
     3: f"{niebieski}Twój przeciwnik spudłował w pole{biały}",
     4: "",
 }
-loading=["Trwa układanie statków przez komputer."]
-# print(f"{czerwony}                    UWAGA!                {biały}")
-# print("   W programie aktualnie nie znajdują się    ")
-# print("    zabezpieczenia przeciwko wprowadzeniu    ")
-# print("   w miejsce zm. liczbowej danej tekstowej   ")
-# print(f"{czerwony}Użytkowniku, uważaj przy wprowadzaniu danych!{biały}")
-# print(" Program może się nieodwracalnie zatrzymać! ")
-# print("--")
-# r=input("Naciśnij dowolny klawisz aby kontynuować ")
+# loading=["Trwa układanie statków przez komputer."]
+print(f"{czerwony}                    UWAGA!                {biały}")
+print("   W programie aktualnie nie znajdują się    ")
+print("    zabezpieczenia przeciwko wprowadzeniu    ")
+print("   w miejsce zm. liczbowej danej tekstowej   ")
+print(f"{czerwony}Użytkowniku, uważaj przy wprowadzaniu danych!{biały}")
+print(" Program może się nieodwracalnie zatrzymać! ")
+print("--")
+r=input("Wciśnij enter aby kontynuować ")
 w_menu=0
 while w_menu==0:
     wait()
@@ -621,7 +621,7 @@ while w_menu==0:
     print("|    - Gra dwuosobowa   (wciśnij 2)           /_ _|           |")
     print("|    - Ustawienia       (wciśnij 3)        _ _ _ _|_ _ _      |")
     print("|                                          \ _ _ _ _ _ /      |")
-    print("| v.0.2.3                                                     |")
+    print("| v.0.3.1                                                     |")
     print("===============================================================")
 
     w_menu=int(input("Tutaj wpisz liczbę: "))
@@ -902,70 +902,72 @@ while w_menu==0:
                 kol=random.randint(1,10)
                 n_set=random.randint(1,10)
                 kol=kol+1
-                row1.kol=k_litery[l_set]+1
+                print(kol)
+                time.sleep(5)
+                row1.kol=kol
                 row1.row1_p=gprow1
                 row1.row1_e=prow1
                 row1.row0_p=litery
                 row1.row0_e=litery
                 row1.row2_p=gprow2
                 row1.row2_e=prow2
-                row2.kol=k_litery[l_set]+1
+                row2.kol=kol
                 row2.row1_p=gprow2
                 row2.row1_e=prow2
                 row2.row0_p=gprow1
                 row2.row0_e=prow1
                 row2.row2_p=gprow3
                 row2.row2_e=prow3
-                row3.kol=k_litery[l_set]+1
+                row3.kol=kol
                 row3.row1_p=gprow3
                 row3.row1_e=prow3
                 row3.row0_p=gprow2
                 row3.row0_e=prow2
                 row3.row2_p=gprow4
                 row3.row2_e=prow4
-                row4.kol=k_litery[l_set]+1
+                row4.kol=kol
                 row4.row1_p=gprow4
                 row4.row1_e=prow4
                 row4.row0_p=gprow3
                 row4.row0_e=prow3
                 row4.row2_p=gprow5
                 row4.row2_e=prow5
-                row5.kol=k_litery[l_set]+1
+                row5.kol=kol
                 row5.row1_p=gprow5
                 row5.row1_e=prow5
                 row5.row0_p=gprow4
                 row5.row0_e=prow4
                 row5.row2_p=gprow6
                 row5.row2_e=prow6
-                row6.kol=k_litery[l_set]+1
+                row6.kol=kol
                 row6.row1_p=gprow6
                 row6.row1_e=prow6
                 row6.row0_p=gprow5
                 row6.row0_e=prow5
                 row6.row2_p=gprow7
                 row6.row2_e=prow7
-                row7.kol=k_litery[l_set]+1
+                row7.kol=kol
                 row7.row1_p=gprow7
                 row7.row1_e=prow7
                 row7.row0_p=gprow6
                 row7.row0_e=prow6
                 row7.row2_p=gprow8
                 row7.row2_e=prow8
-                row8.kol=k_litery[l_set]+1
+                row8.kol=kol
                 row8.row1_p=gprow8
                 row8.row1_e=prow8
                 row8.row0_p=gprow7
                 row8.row0_e=prow7
                 row8.row2_p=gprow9
                 row8.row2_e=prow9
-                row9.kol=k_litery[l_set]+1
+                row9.kol=kol
                 row9.row1_p=gprow9
                 row9.row1_e=prow9
                 row9.row0_p=gprow8
                 row9.row0_e=prow8
                 row9.row2_p=gsprow10
                 row9.row2_e=prow10
-                row10.kol=k_litery[l_set]+1
+                row10.kol=kol
                 row10.row1_p=gprow10
                 row10.row1_e=prow10
                 row10.row0_p=gprow9
@@ -977,64 +979,64 @@ while w_menu==0:
                     stat=stat-row1.stat_local
                     i2=row1.stat_local
                     row1.stat_local=0
-                    km=row1.kom
+                    km1=row1.kom
                 elif n_set==2:
                     row2.zrzucanie_gc()
                     stat=stat-row2.stat_local
                     i2=row2.stat_local
                     row2.stat_local=0
-                    km=row2.kom
+                    km1=row2.kom
                 elif n_set==3:
                     row3.zrzucanie_gc()
                     stat=stat-row3.stat_local
                     i2=row3.stat_local
                     row3.stat_local=0
-                    km=row3.kom
+                    km1=row3.kom
                 elif n_set==4:
                     row4.zrzucanie_gc()
                     stat=stat-row4.stat_local
                     i2=row4.stat_local
                     row4.stat_local=0
-                    km=row4.kom        
+                    km1=row4.kom        
                 elif n_set==5:
                     row5.zrzucanie_gc()
                     stat=stat-row5.stat_local
                     i2=row5.stat_local
                     row5.stat_local=0
-                    km=row5.kom
+                    km1=row5.kom
                 elif n_set==6:
                     row6.zrzucanie_gc()
                     stat=stat-row6.stat_local
                     i2=row6.stat_local
                     row6.stat_local=0
-                    km=row6.kom
+                    km1=row6.kom
                 elif n_set==7:
                     row7.zrzucanie_gc()
                     stat=stat-row7.stat_local
                     i2=row7.stat_local
                     row7.stat_local=0
-                    km=row7.kom
+                    km1=row7.kom
                 elif n_set==8:
                     row8.zrzucanie_gc()
                     stat=stat-row8.stat_local
                     i2=row8.stat_local
                     row8.stat_local=0
-                    km=row8.kom
+                    km1=row8.kom
                 elif n_set==9:
                     row9.zrzucanie_gc()
                     stat=stat-row9.stat_local
                     i2=row9.stat_local
                     row9.stat_local=0
-                    km=row9.kom
+                    km1=row9.kom
                 else:
                     row10.zrzucanie_gc()
                     stat=stat-row10.stat_local
                     i2=row10.stat_local
                     row10.stat_local=0
-                    km=row10.kom
+                    km1=row10.kom
                 nr=n_set
                 nr=str(nr)
-                m=l_set+nr
+                m=litery[kol]+nr
                 ms=[]
                 ms.append(m)
                 
@@ -1249,8 +1251,8 @@ while w_menu==0:
                 nr=str(nr)
                 m2=l_set+nr
                 ms2.append(m2)
+            ms=[]
             while i2!=0 and stat!=0:
-                ms=[]
                 wait()
                 print("=================")
                 print(f"{niebieski}  RUCH GRACZA 2  {biały}")
@@ -1405,7 +1407,7 @@ while w_menu==0:
                     stat=stat-row10.stat_local
                     i2=row10.stat_local
                     row10.stat_local=0
-                    km=row10.kom
+                    km1=row10.kom
                 nr=n_set
                 nr=str(nr)
                 m=l_set+nr
@@ -1417,10 +1419,12 @@ while w_menu==0:
         while czas>=60:
             minuta=minuta+1
             czas=czas-60
-        if stat==0:
-            winner="gracz 2"
-        else:
+        if stat==0 and stat2==0:
+            winner="remis"
+        elif stat2==0:
             winner="gracz 1"
+        else:
+            winner="gracz 2"
         wait()
         print("======================================================")
         print(f"|                {zielony}GRA SKOŃCZONA!{biały}                      |")
@@ -1564,7 +1568,7 @@ while w_menu==0:
                 zm=1
                 while zm!=0:
                     wait()
-                    print("∧ <--------------------------------------------------------------------------------------------------->")
+                    print("∧ <---------------------------------------------------------------------------------------------------------------------------->")
                     for t in range (14):
                         print("|")
                     zm=int(input(f"∨   {pogrubienie}{zielony}Dostosuj minimalną wysokość i szerokość terminalu do strzałek. Aby wrócić to ustawień, wciśnij 0: {biały}"))
